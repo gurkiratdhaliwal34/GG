@@ -1,6 +1,10 @@
 # Claude Code — machine-local permissions, not shared
 .claude/settings.local.json
 
+# Node — the project has no dependencies, but tools may still create these
+node_modules/
+npm-debug.log*
+
 # Windows / OneDrive noise
 Thumbs.db
 ehthumbs.db

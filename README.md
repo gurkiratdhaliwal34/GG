@@ -2,39 +2,47 @@
 
 Landing page for a 24/7 mobile tire service in Penticton, BC.
 
-## This is a plain static site. There is no build step.
+## Static site, zero dependencies, no build step
 
-**No `package.json`, no dependencies, no bundler, no npm.** `index.html` is
-hand-written, self-contained HTML and CSS; the images sit beside it in the repo
-root. Nothing compiles, transpiles, or gets installed.
+`index.html` is hand-written, self-contained HTML and CSS; the images sit beside
+it in the repo root. Nothing compiles, transpiles, or bundles.
 
-If a tool runs `npm install` here it will fail with:
+There is a `package.json`, but only so that tooling which insists on running
+`npm` finds what it expects. **`dependencies` is empty and stays that way** —
+`server.js` uses nothing but Node's built-in modules, so `npm install` has
+nothing to install and there is no `node_modules` tree.
 
-```
-npm error enoent Could not read package.json
-```
-
-That is the tool wrongly assuming this is a Node project — not a problem with
-the site. The fix is to stop it running npm, never to add a `package.json`.
-Deploy settings should be:
-
-| Setting          | Value              |
-| ---------------- | ------------------ |
-| Build command    | *(leave empty)*    |
-| Publish / output | `.` (repo root)    |
-| Framework preset | None / Other       |
+`npm run build` is a deliberate no-op. It prints a line and exits 0, so a
+platform that runs a build command doesn't fail on a site that has nothing to
+build.
 
 ## Running it locally
 
-Open `index.html` in a browser. That's the whole procedure — double-click it,
-or:
+Simplest — no Node needed at all. Open `index.html` in a browser:
 
 ```bash
 start index.html
 ```
 
-No server is required. The page makes no network requests apart from the
-Google Fonts stylesheet, so it renders correctly straight off the filesystem.
+The page makes no network requests apart from the Google Fonts stylesheet, so
+it renders correctly straight off the filesystem.
+
+Or serve it over HTTP, which matches how it behaves when deployed:
+
+```bash
+npm start
+```
+
+That runs `server.js` on <http://127.0.0.1:3000>. Set `PORT` to use another
+port. Requires Node 18 or newer.
+
+## Deploy settings for a static host
+
+| Setting          | Value              |
+| ---------------- | ------------------ |
+| Build command    | *(empty)*          |
+| Publish / output | `.` (repo root)    |
+| Framework preset | None / Other       |
 
 ## Deploying
 
@@ -60,6 +68,8 @@ Neither is fixable from inside the workflow. The setting is the fix.
 | File                  | What it is                                  |
 | --------------------- | ------------------------------------------- |
 | `index.html`          | The entire site — markup and CSS in one file |
+| `server.js`           | Static file server, Node built-ins only      |
+| `package.json`        | Scripts only; no dependencies                |
 | `BG1.png`             | Hero background photograph                   |
 | `logo.svg`            | Summit Tire & Wheels mark, top left          |
 | `Logo1.svg`–`Logo9.svg` | Tire manufacturer logos in the bottom rail |

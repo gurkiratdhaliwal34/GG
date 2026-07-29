@@ -1,0 +1,17 @@
+{
+  "name": "summit-tire",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page for Summit Tire & Wheels Ltd — 24/7 mobile tire service in Penticton, BC",
+  "license": "UNLICENSED",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "node -e \"console.log('Static site — nothing to build. Serve the repo root as-is.')\""
+  },
+  "dependencies": {}
+}
