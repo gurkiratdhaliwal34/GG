@@ -1,0 +1,6 @@
+# Normalize line endings in the repo; check out native on each machine.
+* text=auto
+
+*.html text
+*.svg  text
+*.png  binary

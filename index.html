@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Summit Tire &amp; Wheels Ltd — 24/7 Mobile Tire Service, Penticton BC</title>
+<meta name="description" content="Mobile tire service and 24/7 roadside assistance across Penticton and the Okanagan Valley. We bring the shop to you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#08090A;
+    --ink-2:#0E1012;
+    --white:#FFFFFF;
+    --mist:rgba(255,255,255,.60);
+    --line:rgba(255,255,255,.13);
+    --red:#D91F26;
+    --red-lit:#FF3B41;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+
+  html,body{height:100%;}
+
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--white);
+    font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow:hidden;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  :focus-visible{
+    outline:2px solid var(--red-lit);
+    outline-offset:4px;
+    border-radius:4px;
+  }
+
+  /* ---------- shell ---------- */
+  .hero{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+    height:100svh;
+    overflow:hidden;
+    padding:clamp(16px,2.4vh,28px) clamp(18px,4vw,56px) 0;
+    background:linear-gradient(rgba(8,9,10,.74),rgba(8,9,10,.78)),url('BG1.png');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+  }
+
+  /* Okanagan ridgeline — the one flourish, lifted from the logo mark */
+  .ridge{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    width:100%;
+    height:min(46vh,420px);
+    z-index:0;
+    pointer-events:none;
+    opacity:.5;
+  }
+  .glow{
+    position:absolute;
+    left:50%; top:38%;
+    width:min(1100px,130vw);
+    aspect-ratio:1;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle,rgba(217,31,38,.16) 0%,rgba(217,31,38,0) 62%);
+    z-index:0;
+    pointer-events:none;
+  }
+
+  /* ---------- header ---------- */
+  .masthead{
+    position:relative;
+    z-index:3;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+  }
+
+  .brand{display:flex;align-items:center;}
+  .brand-mark{
+    display:block;
+    width:clamp(48px,5.5vw,64px);
+    height:clamp(48px,5.5vw,64px);
+    object-fit:contain;
+    background:#FFFFFF;
+    border-radius:10px;
+    padding:6px;
+    box-shadow:0 2px 12px rgba(0,0,0,.4);
+  }
+
+  .nav{display:flex;gap:clamp(20px,3vw,42px);}
+  .nav a{
+    font-size:14px;
+    font-weight:600;
+    color:rgba(255,255,255,.82);
+    transition:color .18s ease;
+  }
+  .nav a:hover{color:var(--white);}
+
+  .pill-contact{
+    border:1px solid rgba(255,255,255,.72);
+    border-radius:999px;
+    padding:11px 26px;
+    font-size:14px;
+    font-weight:600;
+    transition:background .2s ease,color .2s ease;
+  }
+  .pill-contact:hover{background:var(--white);color:var(--ink);}
+
+  /* ---------- centre stage ---------- */
+  .stage{
+    position:relative;
+    z-index:2;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    text-align:center;
+    padding-top:clamp(4px,1vh,14px);
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.13em;
+    margin-bottom:clamp(8px,1.2vh,14px);
+  }
+  .eyebrow svg{width:13px;height:13px;fill:var(--red-lit);}
+
+  .display{
+    margin:0;
+    font-weight:800;
+    line-height:.94;
+    letter-spacing:-.035em;
+    text-transform:uppercase;
+  }
+  .display .hollow{
+    display:block;
+    font-size:clamp(2rem,6.2vw,4.6rem);
+    color:transparent;
+    -webkit-text-stroke:1.6px rgba(255,255,255,.9);
+    letter-spacing:.02em;
+  }
+  .display .solid{
+    display:block;
+    font-size:clamp(2.1rem,7.2vw,5.4rem);
+    margin-top:-.06em;
+  }
+
+  .deck{
+    max-width:56ch;
+    margin:clamp(8px,1.4vh,14px) auto 0;
+    font-size:clamp(13px,1.05vw,15px);
+    font-weight:500;
+    line-height:1.45;
+    color:var(--mist);
+  }
+
+  .actions{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:14px;
+    margin-top:clamp(8px,1.2vh,14px);
+  }
+  .btn{
+    border-radius:999px;
+    padding:11px 26px;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:-.01em;
+    transition:transform .18s ease,box-shadow .22s ease,background .2s ease,color .2s ease;
+  }
+  .btn-call{
+    background:var(--red);
+    color:var(--white);
+    box-shadow:0 0 34px rgba(217,31,38,.55);
+  }
+  .btn-call:hover{background:var(--red-lit);box-shadow:0 0 52px rgba(255,59,65,.7);transform:translateY(-2px);}
+  .btn-book{
+    background:var(--white);
+    color:var(--ink);
+    border:1px solid var(--white);
+  }
+  .btn-book:hover{background:transparent;color:var(--white);transform:translateY(-2px);}
+
+  /* ---------- brand rail ---------- */
+  .rail{
+    position:relative;
+    z-index:2;
+    border-top:1px solid var(--line);
+    padding:clamp(12px,1.8vh,18px) 0 clamp(14px,2.2vh,22px);
+    margin:0 calc(-1 * clamp(18px,4vw,56px));
+  }
+  .rail-label{
+    text-align:center;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.22em;
+    color:rgba(255,255,255,.42);
+    margin-bottom:clamp(10px,1.4vh,14px);
+  }
+  .marquee{
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 12%,#000 88%,transparent 100%);
+    mask-image:linear-gradient(90deg,transparent 0%,#000 12%,#000 88%,transparent 100%);
+    -webkit-mask-repeat:no-repeat;
+    mask-repeat:no-repeat;
+    -webkit-mask-size:100% 100%;
+    mask-size:100% 100%;
+    -webkit-mask-position:0 0;
+    mask-position:0 0;
+    -webkit-mask-composite:source-over;
+    mask-composite:add;
+  }
+  .track{
+    display:flex;
+    width:max-content;
+    animation:slide 34s linear infinite;
+  }
+  .marquee:hover .track{animation-play-state:paused;}
+  .brand-logo{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:38px;
+    margin:0 clamp(10px,1.6vw,16px);
+    padding:7px clamp(16px,2.2vw,24px);
+    background:rgba(255,255,255,.94);
+    border-radius:8px;
+    flex-shrink:0;
+  }
+  .brand-logo img{
+    display:block;
+    height:100%;
+    width:auto;
+    max-width:118px;
+    object-fit:contain;
+  }
+  @keyframes slide{to{transform:translateX(-50%);}}
+
+  /* ---------- entrance ---------- */
+  .rise{opacity:0;transform:translateY(16px);animation:rise .8s cubic-bezier(.2,.7,.3,1) forwards;}
+  .d1{animation-delay:.05s;} .d2{animation-delay:.16s;} .d3{animation-delay:.30s;}
+  .d4{animation-delay:.42s;} .d5{animation-delay:.54s;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:860px){
+    .nav{display:none;}
+    .rail-label{letter-spacing:.16em;}
+  }
+  @media (max-width:520px){
+    .pill-contact{padding:9px 18px;font-size:13px;}
+    .deck{font-size:14px;}
+    .btn{padding:13px 24px;font-size:14px;}
+    .actions{gap:10px;}
+  }
+  @media (max-height:640px){
+    .display .hollow{font-size:clamp(2rem,6vw,3.4rem);}
+    .display .solid{font-size:clamp(2.1rem,7vw,4rem);}
+    .deck{display:none;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .rise{opacity:1;transform:none;animation:none;}
+    .btn:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<main class="hero">
+
+  <div class="glow" aria-hidden="true"></div>
+
+  <svg class="ridge" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity=".085"/>
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="near" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#D91F26" stop-opacity=".16"/>
+        <stop offset="100%" stop-color="#D91F26" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path fill="url(#far)" d="M0 300 L180 190 L300 250 L470 96 L620 236 L760 150 L900 262 L1060 130 L1210 244 L1330 186 L1440 258 L1440 420 L0 420 Z"/>
+    <path fill="url(#near)" d="M0 356 L150 286 L290 340 L430 232 L560 330 L700 262 L860 348 L1000 268 L1150 344 L1290 290 L1440 352 L1440 420 L0 420 Z"/>
+  </svg>
+
+  <!-- ============ header ============ -->
+  <header class="masthead rise d1">
+    <a class="brand" href="/" aria-label="Summit Tire and Wheels Ltd, home">
+      <img class="brand-mark" src="logo.svg" alt="Summit Tire and Wheels Ltd">
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#quote">Tire Quotes</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <a class="pill-contact" href="mailto:summittire@outlook.com">Contact</a>
+  </header>
+
+  <!-- ============ hero ============ -->
+  <section class="stage">
+    <p class="eyebrow rise d2">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
+      PENTICTON, BC &nbsp;·&nbsp; SERVING THE OKANAGAN
+    </p>
+
+    <h1 class="display rise d3">
+      <span class="hollow">24/7</span>
+      <span class="solid">Mobile Tire Service</span>
+    </h1>
+
+    <p class="deck rise d4">
+      Flat, blowout, or a seasonal swap — we bring the shop to your driveway, your jobsite,
+      or the shoulder of Highway 97. New and used tires, wheel service, and emergency roadside
+      help across the valley, any hour of the night.
+    </p>
+
+    <div class="actions rise d5">
+      <!-- Emergency line -->
+      <a class="btn btn-call" href="tel:+12505028000">Call 250-502-8000</a>
+      <!-- TODO: swap "#book" for the Square booking URL when it's ready -->
+      <a class="btn btn-book" href="#book">Book a service</a>
+    </div>
+  </section>
+
+  <!-- ============ brand rail ============ -->
+  <footer class="rail rise d5">
+    <p class="rail-label">TIRES WE STOCK &amp; INSTALL</p>
+    <div class="marquee">
+      <div class="track">
+        <span class="brand-logo"><img src="Logo1.svg" alt="Goodyear"></span>
+        <span class="brand-logo"><img src="Logo2.svg" alt="Blackhawk"></span>
+        <span class="brand-logo"><img src="Logo3.svg" alt="Toyo Tires"></span>
+        <span class="brand-logo"><img src="Logo4.svg" alt="Pirelli"></span>
+        <span class="brand-logo"><img src="Logo5.svg" alt="Bridgestone"></span>
+        <span class="brand-logo"><img src="Logo6.svg" alt="Uniroyal / Michelin"></span>
+        <span class="brand-logo"><img src="Logo7.svg" alt="Apollo Tyres"></span>
+        <span class="brand-logo"><img src="Logo8.svg" alt="Kumho"></span>
+        <span class="brand-logo"><img src="Logo9.svg" alt="Nokian Tyres"></span>
+        <span class="brand-logo" aria-hidden="true"><img src="Logo1.svg" alt=""></span>
+        <span class="brand-logo" aria-hidden="true"><img src="Logo2.svg" alt=""></span>
+        <span class="brand-logo" aria-hidden="true"><img src="Logo3.svg" alt=""></span>
+        <span class="brand-logo" aria-hidden="true"><img src="Logo4.svg" alt=""></span>
+        <span class="brand-logo" aria-hidden="true"><img src="Logo5.svg" alt=""></span>
+        <span class="brand-logo" aria-hidden="true"><img src="Logo6.svg" alt=""></span>
+        <span class="brand-logo" aria-hidden="true"><img src="Logo7.svg" alt=""></span>
+        <span class="brand-logo" aria-hidden="true"><img src="Logo8.svg" alt=""></span>
+        <span class="brand-logo" aria-hidden="true"><img src="Logo9.svg" alt=""></span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>
