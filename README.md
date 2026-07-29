@@ -39,14 +39,21 @@ Google Fonts stylesheet, so it renders correctly straight off the filesystem.
 ## Deploying
 
 `.github/workflows/deploy.yml` publishes the repo root to GitHub Pages on every
-push to `main`. It passes `enablement: true`, so it switches Pages on itself the
-first time it runs — no setting to flip by hand.
+push to `main`.
 
-**Caveat: Pages on a *private* repo requires GitHub Pro or higher.** On a free
-account the workflow will keep failing with `Get Pages site failed` /
-`Not Found` no matter what the workflow says, because the plan doesn't permit
-it. The options are to make the repo public (this site holds no secrets), to
-upgrade, or to host the files somewhere else.
+**Pages has to be switched on once, by hand:**
+
+**Settings → Pages → Build and deployment → Source: GitHub Actions**
+
+Until that's done every run fails at the `configure-pages` step. The two errors
+it produces, and what they actually mean:
+
+| Error | Meaning |
+| ----- | ------- |
+| `Get Pages site failed … Not Found` | Pages has never been enabled on this repo. |
+| `Create Pages site failed … Resource not accessible by integration` | The workflow tried to enable Pages itself via `enablement: true`. It can't — creating a Pages site is an admin operation, and `GITHUB_TOKEN` is never granted it. |
+
+Neither is fixable from inside the workflow. The setting is the fix.
 
 ## Files
 
