@@ -78,8 +78,29 @@ Neither is fixable from inside the workflow. The setting is the fix.
 | `BG1.png`               | Hero photograph, set on `.hero-bg` in the CSS  |
 | `server.js`             | Static file server, Node built-ins only        |
 | `package.json`          | Scripts only; no dependencies                  |
-| `logo.svg`              | Masthead mark on all four pages                |
+| `logo-mark.png`         | Masthead mark, 128px — what the pages load     |
+| `logo.svg`              | Master logo artwork; not loaded by the site    |
 | `Logo1.svg`–`Logo9.svg` | Tire brand logos in the home page rail         |
+
+### Why the masthead uses a PNG
+
+`logo.svg` is a traced bitmap, not drawn vector art: 3,249 separate paths, each
+with its own slightly different dark fill, at 956 KB. Displaying that at 42px
+meant shipping most of a megabyte on every page to draw a thumbnail.
+
+`logo-mark.png` is the same artwork rasterised at 128px — **13.8 KB, a 98.6%
+reduction** — which covers the 42px slot at 3× density. `logo.svg` stays in the
+repo untouched as the master for anything needing real resolution (signage,
+print, a larger web mark). It has a `viewBox` now, so it scales properly if you
+do use it.
+
+To regenerate the PNG after editing the master:
+
+```bash
+"/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" --headless --disable-gpu --default-background-color=00000000 --window-size=128,128 --screenshot=logo-mark.png logo-frame.html
+```
+
+where `logo-frame.html` is just an `<img src="logo.svg">` sized to 128×128.
 
 ## The quote form
 
@@ -103,6 +124,6 @@ Known limits of the mailto approach:
 - The **30 minute** typical-response figure on the home page is marked with a
   `PLACEHOLDER` comment in `index.html`. Confirm it's a number Summit can hit
   on a bad day, not a best case.
-- **Check the rail logo captions.** The `alt` text on `Logo2.svg` says Michelin,
-  carried over from the wordmark it replaced. The original markup called that
-  file Blackhawk. Worth opening the file to confirm which brand it actually is.
+Rail `alt` text was checked against a render of the actual files: `Logo2.svg` is
+Michelin, not Blackhawk as the original markup claimed. All nine are correct as
+labelled.
