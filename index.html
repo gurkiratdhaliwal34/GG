@@ -16,13 +16,9 @@
 
 <header class="masthead">
   <div class="masthead-in">
+    <!-- alt is empty on purpose: the anchor's aria-label already names it. -->
     <a class="brand" href="index.html" aria-label="Summit Tire and Wheels Ltd, home">
-      <svg viewBox="0 0 120 44" aria-hidden="true">
-        <path fill="#D91F26" d="M0 44 L34 6 L52 27 L62 16 L84 44 Z"/>
-        <path fill="#FFFFFF" d="M56 44 L84 12 L120 44 Z"/>
-      </svg>
-      <span class="brand-name">SUMMIT</span>
-      <span class="brand-sub">TIRE &amp; WHEELS <b>LTD</b></span>
+      <img class="brand-mark" src="logo.svg" alt="">
     </a>
 
     <nav class="nav" aria-label="Primary">
@@ -102,13 +98,28 @@
     <div class="rail">
       <p class="rail-label">Tires we stock &amp; install</p>
       <div class="marquee">
+        <!-- The second half is a duplicate of the first so the -50% keyframe
+             loops seamlessly. Add or remove a logo in BOTH halves. -->
         <div class="track">
-          <span>GOODYEAR</span><span>MICHELIN</span><span>TOYO</span><span>PIRELLI</span>
-          <span>BRIDGESTONE</span><span>UNIROYAL</span><span>BFGOODRICH</span><span>KUMHO</span>
-          <span>NOKIAN</span><span>APOLLO</span>
-          <span aria-hidden="true">GOODYEAR</span><span aria-hidden="true">MICHELIN</span><span aria-hidden="true">TOYO</span><span aria-hidden="true">PIRELLI</span>
-          <span aria-hidden="true">BRIDGESTONE</span><span aria-hidden="true">UNIROYAL</span><span aria-hidden="true">BFGOODRICH</span><span aria-hidden="true">KUMHO</span>
-          <span aria-hidden="true">NOKIAN</span><span aria-hidden="true">APOLLO</span>
+          <span class="brand-logo"><img src="Logo1.svg" alt="Goodyear"></span>
+          <span class="brand-logo"><img src="Logo2.svg" alt="Michelin"></span>
+          <span class="brand-logo"><img src="Logo3.svg" alt="Toyo Tires"></span>
+          <span class="brand-logo"><img src="Logo4.svg" alt="Pirelli"></span>
+          <span class="brand-logo"><img src="Logo5.svg" alt="Bridgestone"></span>
+          <span class="brand-logo"><img src="Logo6.svg" alt="Uniroyal"></span>
+          <span class="brand-logo"><img src="Logo7.svg" alt="Apollo Tyres"></span>
+          <span class="brand-logo"><img src="Logo8.svg" alt="Kumho Tire"></span>
+          <span class="brand-logo"><img src="Logo9.svg" alt="Nokian Tyres"></span>
+
+          <span class="brand-logo" aria-hidden="true"><img src="Logo1.svg" alt=""></span>
+          <span class="brand-logo" aria-hidden="true"><img src="Logo2.svg" alt=""></span>
+          <span class="brand-logo" aria-hidden="true"><img src="Logo3.svg" alt=""></span>
+          <span class="brand-logo" aria-hidden="true"><img src="Logo4.svg" alt=""></span>
+          <span class="brand-logo" aria-hidden="true"><img src="Logo5.svg" alt=""></span>
+          <span class="brand-logo" aria-hidden="true"><img src="Logo6.svg" alt=""></span>
+          <span class="brand-logo" aria-hidden="true"><img src="Logo7.svg" alt=""></span>
+          <span class="brand-logo" aria-hidden="true"><img src="Logo8.svg" alt=""></span>
+          <span class="brand-logo" aria-hidden="true"><img src="Logo9.svg" alt=""></span>
         </div>
       </div>
     </div>

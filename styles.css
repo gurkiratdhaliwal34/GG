@@ -66,6 +66,18 @@ img,svg{max-width:100%;}
 
 .brand{display:flex;flex-direction:column;align-items:flex-start;gap:2px;}
 .brand svg{display:block;width:32px;height:auto;margin-bottom:1px;}
+
+/* Masthead mark. logo.svg is square full-colour artwork, so it gets a white
+   plate rather than fighting the dark masthead. The footer keeps the text
+   lockup below, which stays legible at small sizes. */
+.brand-mark{
+  display:block;
+  width:clamp(40px,4.4vw,50px);height:auto;
+  background:var(--white);
+  border-radius:9px;
+  padding:5px;
+  box-shadow:0 2px 12px rgba(0,0,0,.4);
+}
 .brand-name{font-size:clamp(18px,2.2vw,24px);font-weight:800;font-style:italic;letter-spacing:-.02em;line-height:1;}
 .brand-sub{
   display:inline-flex;align-items:center;gap:6px;
@@ -543,6 +555,24 @@ img,svg{max-width:100%;}
   font-weight:700;letter-spacing:.10em;
   color:rgba(255,255,255,.78);
   white-space:nowrap;
+}
+
+/* Manufacturer artwork sits on a near-white pill — most of these logos are
+   dark-on-transparent and would disappear against the hero. Two classes beat
+   `.track span` on specificity, so the padding above doesn't apply here. */
+.track .brand-logo{
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  height:38px;
+  margin:0 clamp(10px,1.6vw,16px);
+  padding:7px clamp(16px,2.2vw,24px);
+  background:rgba(255,255,255,.94);
+  border-radius:8px;
+}
+.track .brand-logo img{
+  display:block;
+  height:100%;width:auto;max-width:118px;
+  object-fit:contain;
 }
 @keyframes slide{to{transform:translateX(-50%);}}
 

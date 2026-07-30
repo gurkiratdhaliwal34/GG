@@ -16,13 +16,9 @@
 
 <header class="masthead">
   <div class="masthead-in">
+    <!-- alt is empty on purpose: the anchor's aria-label already names it. -->
     <a class="brand" href="index.html" aria-label="Summit Tire and Wheels Ltd, home">
-      <svg viewBox="0 0 120 44" aria-hidden="true">
-        <path fill="#D91F26" d="M0 44 L34 6 L52 27 L62 16 L84 44 Z"/>
-        <path fill="#FFFFFF" d="M56 44 L84 12 L120 44 Z"/>
-      </svg>
-      <span class="brand-name">SUMMIT</span>
-      <span class="brand-sub">TIRE &amp; WHEELS <b>LTD</b></span>
+      <img class="brand-mark" src="logo.svg" alt="">
     </a>
 
     <nav class="nav" aria-label="Primary">
@@ -73,14 +69,21 @@
     <div class="wrap">
 
       <!-- ==================================================================
-           TODO — WIRE UP THE FORM. It does not send anywhere yet.
-           Pick one and set it on the <form> tag below:
+           There is no server behind this site, so submitting hands off to the
+           customer's own mail client: site.js reads the fields and builds a
+           mailto: for the address in data-mailto. The action attribute is only
+           a no-JS fallback — browser support for mailto form posts is patchy,
+           which is why the script does the work.
+
+           To move to a real endpoint later, set one of these on the tag and
+           delete data-mailto (site.js then leaves the form alone):
              Formspree     action="https://formspree.io/f/YOUR_ID"  method="post"
              Netlify Forms add  netlify  attribute (host must be Netlify)
              Web3Forms     action="https://api.web3forms.com/submit" + hidden access_key
-           Then set up the "thanks" page and point the redirect at it.
            =================================================================== -->
-      <form class="form" action="#" method="post">
+      <form class="form"
+            data-mailto="summittire@outlook.com"
+            action="mailto:summittire@outlook.com" method="post" enctype="text/plain">
 
         <div class="grid-2">
           <div class="field">
