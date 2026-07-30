@@ -65,11 +65,9 @@ img,svg{max-width:100%;}
 }
 
 .brand{display:flex;flex-direction:column;align-items:flex-start;gap:2px;}
-.brand svg{display:block;width:32px;height:auto;margin-bottom:1px;}
 
-/* Masthead mark. logo.svg is square full-colour artwork, so it gets a white
-   plate rather than fighting the dark masthead. The footer keeps the text
-   lockup below, which stays legible at small sizes. */
+/* The logo is full-colour artwork on dark ink, so it gets a white plate to sit
+   on rather than fighting the background. Used in the masthead and the footer. */
 .brand-mark{
   display:block;
   width:clamp(40px,4.4vw,50px);height:auto;
@@ -78,14 +76,14 @@ img,svg{max-width:100%;}
   padding:5px;
   box-shadow:0 2px 12px rgba(0,0,0,.4);
 }
-.brand-name{font-size:clamp(18px,2.2vw,24px);font-weight:800;font-style:italic;letter-spacing:-.02em;line-height:1;}
-.brand-sub{
-  display:inline-flex;align-items:center;gap:6px;
-  background:var(--red);color:var(--white);
-  font-size:8.5px;font-weight:800;letter-spacing:.18em;line-height:1;
-  padding:4px 6px 3px;border-radius:2px;
+
+/* Larger in the footer, where it's the column's heading rather than one item
+   in a crowded bar. */
+.brand-mark-foot{
+  width:clamp(56px,6vw,68px);
+  border-radius:11px;
+  padding:6px;
 }
-.brand-sub b{background:var(--white);color:var(--red);padding:2px 3px 1px;border-radius:1px;font-size:7.5px;letter-spacing:.06em;}
 
 .nav{display:flex;gap:clamp(18px,2.6vw,38px);}
 .nav a{
