@@ -1,11 +1,13 @@
 # Summit Tire & Wheels Ltd — website
 
-Landing page for a 24/7 mobile tire service in Penticton, BC.
+Four-page site for a 24/7 mobile tire service in Penticton, BC.
 
 ## Static site, zero dependencies, no build step
 
-`index.html` is hand-written, self-contained HTML and CSS; the images sit beside
-it in the repo root. Nothing compiles, transpiles, or bundles.
+Hand-written HTML with one shared stylesheet and one shared script. Nothing
+compiles, transpiles, or bundles. Every page links to its siblings by plain
+relative filename, so the site works from the filesystem or any static host
+without rewrite rules.
 
 There is a `package.json`, but only so that tooling which insists on running
 `npm` finds what it expects. **`dependencies` is empty and stays that way** —
@@ -65,19 +67,29 @@ Neither is fixable from inside the workflow. The setting is the fix.
 
 ## Files
 
-| File                  | What it is                                  |
-| --------------------- | ------------------------------------------- |
-| `index.html`          | The entire site — markup and CSS in one file |
-| `server.js`           | Static file server, Node built-ins only      |
-| `package.json`        | Scripts only; no dependencies                |
-| `BG1.png`             | Hero background photograph                   |
-| `logo.svg`            | Summit Tire & Wheels mark, top left          |
-| `Logo1.svg`–`Logo9.svg` | Tire manufacturer logos in the bottom rail |
+| File                    | What it is                                     |
+| ----------------------- | ---------------------------------------------- |
+| `index.html`            | Home — hero, why-choose, services teaser, CTA  |
+| `services.html`         | Service detail and how a call-out works        |
+| `quotes.html`           | Tire quote request form                        |
+| `about.html`            | About, service area, and contact               |
+| `styles.css`            | All styling for every page                     |
+| `site.js`               | Mobile nav, scroll reveal, figure count-up     |
+| `BG1.png`               | Hero photograph, set on `.hero-bg` in the CSS  |
+| `server.js`             | Static file server, Node built-ins only        |
+| `package.json`          | Scripts only; no dependencies                  |
+| `logo.svg`              | Full logo artwork — **currently unused**       |
+| `Logo1.svg`–`Logo9.svg` | Tire brand logos — **currently unused**        |
 
 ## Known incomplete
 
-- The **Services**, **Tire Quotes**, and **About** nav links point at
-  `#services`, `#quote`, and `#about`. Those sections do not exist yet, so the
-  links do nothing. The page is deliberately locked to one viewport
-  (`body { overflow: hidden }`) until they are written.
-- **Book a service** points at `#book`, pending the Square booking URL.
+- The **brand rail** on the home page renders manufacturer names as styled text
+  (`.track span`). The `Logo*.svg` artwork in the repo is not wired up, and
+  `logo.svg` is unused because the header draws its own inline SVG mark.
+- **The quote form does not send.** `quotes.html:83` has `action="#"`, so
+  pressing *Send quote request* just reloads the page and the customer's details
+  are lost. A comment above the tag lists handler options (Formspree,
+  Web3Forms). This needs doing before the page goes in front of customers.
+- The **30 minute** typical-response figure on the home page is marked with a
+  `PLACEHOLDER` comment in `index.html`. Confirm it's a number Summit can hit
+  on a bad day, not a best case.

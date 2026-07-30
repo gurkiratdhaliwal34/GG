@@ -4,374 +4,276 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Summit Tire &amp; Wheels Ltd — 24/7 Mobile Tire Service, Penticton BC</title>
-<meta name="description" content="Mobile tire service and 24/7 roadside assistance across Penticton and the Okanagan Valley. We bring the shop to you.">
+<meta name="description" content="Mobile tire service and emergency roadside assistance across Penticton and the Okanagan Valley. New and used tires brought to you, any hour. Call 250-502-8000.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#08090A;
-    --ink-2:#0E1012;
-    --white:#FFFFFF;
-    --mist:rgba(255,255,255,.60);
-    --line:rgba(255,255,255,.13);
-    --red:#D91F26;
-    --red-lit:#FF3B41;
-  }
-
-  *,*::before,*::after{box-sizing:border-box;}
-
-  html,body{height:100%;}
-
-  body{
-    margin:0;
-    background:var(--ink);
-    color:var(--white);
-    font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
-    -webkit-font-smoothing:antialiased;
-    overflow:hidden;
-  }
-
-  a{color:inherit;text-decoration:none;}
-
-  :focus-visible{
-    outline:2px solid var(--red-lit);
-    outline-offset:4px;
-    border-radius:4px;
-  }
-
-  /* ---------- shell ---------- */
-  .hero{
-    position:relative;
-    display:flex;
-    flex-direction:column;
-    height:100vh;
-    height:100svh;
-    overflow:hidden;
-    padding:clamp(16px,2.4vh,28px) clamp(18px,4vw,56px) 0;
-    background:linear-gradient(rgba(8,9,10,.74),rgba(8,9,10,.78)),url('BG1.png');
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-  }
-
-  /* Okanagan ridgeline — the one flourish, lifted from the logo mark */
-  .ridge{
-    position:absolute;
-    left:0; right:0; bottom:0;
-    width:100%;
-    height:min(46vh,420px);
-    z-index:0;
-    pointer-events:none;
-    opacity:.5;
-  }
-  .glow{
-    position:absolute;
-    left:50%; top:38%;
-    width:min(1100px,130vw);
-    aspect-ratio:1;
-    transform:translate(-50%,-50%);
-    background:radial-gradient(circle,rgba(217,31,38,.16) 0%,rgba(217,31,38,0) 62%);
-    z-index:0;
-    pointer-events:none;
-  }
-
-  /* ---------- header ---------- */
-  .masthead{
-    position:relative;
-    z-index:3;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:24px;
-  }
-
-  .brand{display:flex;align-items:center;}
-  .brand-mark{
-    display:block;
-    width:clamp(48px,5.5vw,64px);
-    height:clamp(48px,5.5vw,64px);
-    object-fit:contain;
-    background:#FFFFFF;
-    border-radius:10px;
-    padding:6px;
-    box-shadow:0 2px 12px rgba(0,0,0,.4);
-  }
-
-  .nav{display:flex;gap:clamp(20px,3vw,42px);}
-  .nav a{
-    font-size:14px;
-    font-weight:600;
-    color:rgba(255,255,255,.82);
-    transition:color .18s ease;
-  }
-  .nav a:hover{color:var(--white);}
-
-  .pill-contact{
-    border:1px solid rgba(255,255,255,.72);
-    border-radius:999px;
-    padding:11px 26px;
-    font-size:14px;
-    font-weight:600;
-    transition:background .2s ease,color .2s ease;
-  }
-  .pill-contact:hover{background:var(--white);color:var(--ink);}
-
-  /* ---------- centre stage ---------- */
-  .stage{
-    position:relative;
-    z-index:2;
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
-    text-align:center;
-    padding-top:clamp(4px,1vh,14px);
-  }
-
-  .eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:7px;
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:.13em;
-    margin-bottom:clamp(8px,1.2vh,14px);
-  }
-  .eyebrow svg{width:13px;height:13px;fill:var(--red-lit);}
-
-  .display{
-    margin:0;
-    font-weight:800;
-    line-height:.94;
-    letter-spacing:-.035em;
-    text-transform:uppercase;
-  }
-  .display .hollow{
-    display:block;
-    font-size:clamp(2rem,6.2vw,4.6rem);
-    color:transparent;
-    -webkit-text-stroke:1.6px rgba(255,255,255,.9);
-    letter-spacing:.02em;
-  }
-  .display .solid{
-    display:block;
-    font-size:clamp(2.1rem,7.2vw,5.4rem);
-    margin-top:-.06em;
-  }
-
-  .deck{
-    max-width:56ch;
-    margin:clamp(8px,1.4vh,14px) auto 0;
-    font-size:clamp(13px,1.05vw,15px);
-    font-weight:500;
-    line-height:1.45;
-    color:var(--mist);
-  }
-
-  .actions{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:14px;
-    margin-top:clamp(8px,1.2vh,14px);
-  }
-  .btn{
-    border-radius:999px;
-    padding:11px 26px;
-    font-size:15px;
-    font-weight:700;
-    letter-spacing:-.01em;
-    transition:transform .18s ease,box-shadow .22s ease,background .2s ease,color .2s ease;
-  }
-  .btn-call{
-    background:var(--red);
-    color:var(--white);
-    box-shadow:0 0 34px rgba(217,31,38,.55);
-  }
-  .btn-call:hover{background:var(--red-lit);box-shadow:0 0 52px rgba(255,59,65,.7);transform:translateY(-2px);}
-  .btn-book{
-    background:var(--white);
-    color:var(--ink);
-    border:1px solid var(--white);
-  }
-  .btn-book:hover{background:transparent;color:var(--white);transform:translateY(-2px);}
-
-  /* ---------- brand rail ---------- */
-  .rail{
-    position:relative;
-    z-index:2;
-    border-top:1px solid var(--line);
-    padding:clamp(12px,1.8vh,18px) 0 clamp(14px,2.2vh,22px);
-    margin:0 calc(-1 * clamp(18px,4vw,56px));
-  }
-  .rail-label{
-    text-align:center;
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:.22em;
-    color:rgba(255,255,255,.42);
-    margin-bottom:clamp(10px,1.4vh,14px);
-  }
-  .marquee{
-    overflow:hidden;
-    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 12%,#000 88%,transparent 100%);
-    mask-image:linear-gradient(90deg,transparent 0%,#000 12%,#000 88%,transparent 100%);
-    -webkit-mask-repeat:no-repeat;
-    mask-repeat:no-repeat;
-    -webkit-mask-size:100% 100%;
-    mask-size:100% 100%;
-    -webkit-mask-position:0 0;
-    mask-position:0 0;
-    -webkit-mask-composite:source-over;
-    mask-composite:add;
-  }
-  .track{
-    display:flex;
-    width:max-content;
-    animation:slide 34s linear infinite;
-  }
-  .marquee:hover .track{animation-play-state:paused;}
-  .brand-logo{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    height:38px;
-    margin:0 clamp(10px,1.6vw,16px);
-    padding:7px clamp(16px,2.2vw,24px);
-    background:rgba(255,255,255,.94);
-    border-radius:8px;
-    flex-shrink:0;
-  }
-  .brand-logo img{
-    display:block;
-    height:100%;
-    width:auto;
-    max-width:118px;
-    object-fit:contain;
-  }
-  @keyframes slide{to{transform:translateX(-50%);}}
-
-  /* ---------- entrance ---------- */
-  .rise{opacity:0;transform:translateY(16px);animation:rise .8s cubic-bezier(.2,.7,.3,1) forwards;}
-  .d1{animation-delay:.05s;} .d2{animation-delay:.16s;} .d3{animation-delay:.30s;}
-  .d4{animation-delay:.42s;} .d5{animation-delay:.54s;}
-  @keyframes rise{to{opacity:1;transform:none;}}
-
-  /* ---------- responsive ---------- */
-  @media (max-width:860px){
-    .nav{display:none;}
-    .rail-label{letter-spacing:.16em;}
-  }
-  @media (max-width:520px){
-    .pill-contact{padding:9px 18px;font-size:13px;}
-    .deck{font-size:14px;}
-    .btn{padding:13px 24px;font-size:14px;}
-    .actions{gap:10px;}
-  }
-  @media (max-height:640px){
-    .display .hollow{font-size:clamp(2rem,6vw,3.4rem);}
-    .display .solid{font-size:clamp(2.1rem,7vw,4rem);}
-    .deck{display:none;}
-  }
-  @media (prefers-reduced-motion:reduce){
-    .rise{opacity:1;transform:none;animation:none;}
-    .btn:hover{transform:none;}
-  }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<main class="hero">
+<a class="skip" href="#main">Skip to content</a>
 
-  <div class="glow" aria-hidden="true"></div>
-
-  <svg class="ridge" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true">
-    <defs>
-      <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#ffffff" stop-opacity=".085"/>
-        <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-      </linearGradient>
-      <linearGradient id="near" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#D91F26" stop-opacity=".16"/>
-        <stop offset="100%" stop-color="#D91F26" stop-opacity="0"/>
-      </linearGradient>
-    </defs>
-    <path fill="url(#far)" d="M0 300 L180 190 L300 250 L470 96 L620 236 L760 150 L900 262 L1060 130 L1210 244 L1330 186 L1440 258 L1440 420 L0 420 Z"/>
-    <path fill="url(#near)" d="M0 356 L150 286 L290 340 L430 232 L560 330 L700 262 L860 348 L1000 268 L1150 344 L1290 290 L1440 352 L1440 420 L0 420 Z"/>
-  </svg>
-
-  <!-- ============ header ============ -->
-  <header class="masthead rise d1">
-    <a class="brand" href="/" aria-label="Summit Tire and Wheels Ltd, home">
-      <img class="brand-mark" src="logo.svg" alt="Summit Tire and Wheels Ltd">
+<header class="masthead">
+  <div class="masthead-in">
+    <a class="brand" href="index.html" aria-label="Summit Tire and Wheels Ltd, home">
+      <svg viewBox="0 0 120 44" aria-hidden="true">
+        <path fill="#D91F26" d="M0 44 L34 6 L52 27 L62 16 L84 44 Z"/>
+        <path fill="#FFFFFF" d="M56 44 L84 12 L120 44 Z"/>
+      </svg>
+      <span class="brand-name">SUMMIT</span>
+      <span class="brand-sub">TIRE &amp; WHEELS <b>LTD</b></span>
     </a>
 
     <nav class="nav" aria-label="Primary">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#quote">Tire Quotes</a>
-      <a href="#about">About</a>
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="services.html">Services</a>
+      <a href="quotes.html">Tire Quotes</a>
+      <a href="about.html">About</a>
     </nav>
 
-    <a class="pill-contact" href="mailto:summittire@outlook.com">Contact</a>
-  </header>
+    <a class="pill-contact" href="about.html#contact">Contact</a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navPanel" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav-panel" id="navPanel" hidden>
+    <nav aria-label="Mobile">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="quotes.html">Tire Quotes</a>
+      <a href="about.html">About</a>
+      <a href="about.html#contact">Contact</a>
+    </nav>
+    <a class="btn btn-call" href="tel:+12505028000">Call 250-502-8000</a>
+  </div>
+</header>
+
+<main id="main">
 
   <!-- ============ hero ============ -->
-  <section class="stage">
-    <p class="eyebrow rise d2">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
-      PENTICTON, BC &nbsp;·&nbsp; SERVING THE OKANAGAN
-    </p>
+  <section class="hero">
 
-    <h1 class="display rise d3">
-      <span class="hollow">24/7</span>
-      <span class="solid">Mobile Tire Service</span>
-    </h1>
+    <!-- Photo is set on .hero-bg in styles.css (BG1.png). -->
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
 
-    <p class="deck rise d4">
-      Flat, blowout, or a seasonal swap — we bring the shop to your driveway, your jobsite,
-      or the shoulder of Highway 97. New and used tires, wheel service, and emergency roadside
-      help across the valley, any hour of the night.
-    </p>
+    <svg class="hero-ridge" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity=".085"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="near" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#D91F26" stop-opacity=".16"/>
+          <stop offset="100%" stop-color="#D91F26" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#far)" d="M0 300 L180 190 L300 250 L470 96 L620 236 L760 150 L900 262 L1060 130 L1210 244 L1330 186 L1440 258 L1440 420 L0 420 Z"/>
+      <path fill="url(#near)" d="M0 356 L150 286 L290 340 L430 232 L560 330 L700 262 L860 348 L1000 268 L1150 344 L1290 290 L1440 352 L1440 420 L0 420 Z"/>
+    </svg>
 
-    <div class="actions rise d5">
-      <!-- Emergency line -->
-      <a class="btn btn-call" href="tel:+12505028000">Call 250-502-8000</a>
-      <!-- TODO: swap "#book" for the Square booking URL when it's ready -->
-      <a class="btn btn-book" href="#book">Book a service</a>
+    <div class="hero-stage">
+      <p class="eyebrow">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
+        Penticton, BC &nbsp;·&nbsp; serving the Okanagan
+      </p>
+
+      <h1 class="display">
+        <span class="hollow">24/7</span>
+        <span class="solid">Mobile tire service</span>
+        <span class="also">&amp; emergency roadside assistance</span>
+      </h1>
+
+      <p class="hero-deck">
+        Flat, blowout, or a seasonal swap — we bring the shop to your driveway, your
+        jobsite, or the shoulder of Highway 97. New and used tires, wheel service, and
+        emergency help at any hour of the night.
+      </p>
+
+      <div class="btns hero-btns">
+        <a class="btn btn-call" href="tel:+12505028000">Call 250-502-8000</a>
+        <a class="btn btn-ghost" href="quotes.html">Get a tire quote</a>
+      </div>
+    </div>
+
+    <div class="rail">
+      <p class="rail-label">Tires we stock &amp; install</p>
+      <div class="marquee">
+        <div class="track">
+          <span>GOODYEAR</span><span>MICHELIN</span><span>TOYO</span><span>PIRELLI</span>
+          <span>BRIDGESTONE</span><span>UNIROYAL</span><span>BFGOODRICH</span><span>KUMHO</span>
+          <span>NOKIAN</span><span>APOLLO</span>
+          <span aria-hidden="true">GOODYEAR</span><span aria-hidden="true">MICHELIN</span><span aria-hidden="true">TOYO</span><span aria-hidden="true">PIRELLI</span>
+          <span aria-hidden="true">BRIDGESTONE</span><span aria-hidden="true">UNIROYAL</span><span aria-hidden="true">BFGOODRICH</span><span aria-hidden="true">KUMHO</span>
+          <span aria-hidden="true">NOKIAN</span><span aria-hidden="true">APOLLO</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============ why choose (stitched in from the standalone page) ============ -->
+  <section class="section" id="why" aria-labelledby="why-h">
+    <div class="wrap">
+      <p class="eyebrow">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
+        No tow truck needed
+      </p>
+      <h2 class="h1" id="why-h">Why choose Summit Tire &amp; Wheels</h2>
+      <p class="deck">
+        Penticton and the Okanagan call us for fast, honest tire work — at home, at the
+        jobsite, or on the shoulder of the highway.
+      </p>
+
+      <div class="band" data-reveal style="margin-top:clamp(26px,4.4vh,46px)">
+        <div class="hazard" aria-hidden="true"></div>
+        <div class="cols-3">
+          <div class="cell">
+            <p class="figure"><span class="num" data-to="24">24</span><span class="unit">/7</span></p>
+            <p class="label">Always answering</p>
+            <p class="copy">Flats don't keep business hours. Neither do we.</p>
+          </div>
+          <div class="cell">
+            <p class="figure">0</p>
+            <p class="label">Tow trucks needed</p>
+            <p class="copy">The truck comes to your driveway, jobsite, or Highway 97.</p>
+          </div>
+          <!-- PLACEHOLDER: set 30 to a time Summit can hit on a bad day, not a best case. -->
+          <div class="cell">
+            <p class="figure"><span class="num" data-to="30">30</span><span class="unit">min</span></p>
+            <p class="label">Typical response</p>
+            <p class="copy">Most Penticton calls have a truck rolling inside half an hour.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ============ brand rail ============ -->
-  <footer class="rail rise d5">
-    <p class="rail-label">TIRES WE STOCK &amp; INSTALL</p>
-    <div class="marquee">
-      <div class="track">
-        <span class="brand-logo"><img src="Logo1.svg" alt="Goodyear"></span>
-        <span class="brand-logo"><img src="Logo2.svg" alt="Blackhawk"></span>
-        <span class="brand-logo"><img src="Logo3.svg" alt="Toyo Tires"></span>
-        <span class="brand-logo"><img src="Logo4.svg" alt="Pirelli"></span>
-        <span class="brand-logo"><img src="Logo5.svg" alt="Bridgestone"></span>
-        <span class="brand-logo"><img src="Logo6.svg" alt="Uniroyal / Michelin"></span>
-        <span class="brand-logo"><img src="Logo7.svg" alt="Apollo Tyres"></span>
-        <span class="brand-logo"><img src="Logo8.svg" alt="Kumho"></span>
-        <span class="brand-logo"><img src="Logo9.svg" alt="Nokian Tyres"></span>
-        <span class="brand-logo" aria-hidden="true"><img src="Logo1.svg" alt=""></span>
-        <span class="brand-logo" aria-hidden="true"><img src="Logo2.svg" alt=""></span>
-        <span class="brand-logo" aria-hidden="true"><img src="Logo3.svg" alt=""></span>
-        <span class="brand-logo" aria-hidden="true"><img src="Logo4.svg" alt=""></span>
-        <span class="brand-logo" aria-hidden="true"><img src="Logo5.svg" alt=""></span>
-        <span class="brand-logo" aria-hidden="true"><img src="Logo6.svg" alt=""></span>
-        <span class="brand-logo" aria-hidden="true"><img src="Logo7.svg" alt=""></span>
-        <span class="brand-logo" aria-hidden="true"><img src="Logo8.svg" alt=""></span>
-        <span class="brand-logo" aria-hidden="true"><img src="Logo9.svg" alt=""></span>
+  <!-- ============ services teaser ============ -->
+  <section class="section" aria-labelledby="svc-h">
+    <div class="wrap">
+      <h2 class="h2" id="svc-h">What we do</h2>
+      <p class="deck">All of it at your vehicle. No drop-off, no waiting room.</p>
+
+      <div class="rows" style="margin-top:clamp(22px,3.4vh,34px)">
+        <div class="row">
+          <h3 class="row-title">Emergency roadside</h3>
+          <p class="row-copy">Flat, blowout, or a shredded sidewall.</p>
+          <span class="row-tag now">24/7 call-out</span>
+        </div>
+        <div class="row">
+          <h3 class="row-title">Mobile tire replacement</h3>
+          <p class="row-copy">Mounted and balanced where the vehicle sits.</p>
+          <span class="row-tag">Same day</span>
+        </div>
+        <div class="row">
+          <h3 class="row-title">Seasonal changeover</h3>
+          <p class="row-copy">Winters on before the snow, summers back in spring.</p>
+          <span class="row-tag">By appointment</span>
+        </div>
+        <div class="row">
+          <h3 class="row-title">Wheel &amp; rim service</h3>
+          <p class="row-copy">Balancing, valve stems, TPMS, slow leaks.</p>
+          <span class="row-tag">By appointment</span>
+        </div>
+        <div class="row">
+          <h3 class="row-title">Used tire sales</h3>
+          <p class="row-copy">Inspected sets with real tread left.</p>
+          <span class="row-tag">In stock</span>
+        </div>
+        <div class="row">
+          <h3 class="row-title">Fleet &amp; commercial</h3>
+          <p class="row-copy">Light truck, trailer, and work vehicle tires.</p>
+          <span class="row-tag">Ongoing</span>
+        </div>
+      </div>
+
+      <div class="btns" style="margin-top:clamp(24px,3.6vh,34px)">
+        <a class="btn btn-line" href="services.html">See the detail on each service</a>
       </div>
     </div>
-  </footer>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <h2 class="h2">Stuck right now?</h2>
+          <p class="cta-note">Answered day and night, valley-wide</p>
+        </div>
+        <div class="btns">
+          <a class="btn btn-call" href="tel:+12505028000">Call 250-502-8000</a>
+          <a class="btn btn-line" href="quotes.html">Get a tire quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </main>
 
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html" aria-label="Summit Tire and Wheels Ltd, home">
+          <svg viewBox="0 0 120 44" aria-hidden="true">
+            <path fill="#D91F26" d="M0 44 L34 6 L52 27 L62 16 L84 44 Z"/>
+            <path fill="#FFFFFF" d="M56 44 L84 12 L120 44 Z"/>
+          </svg>
+          <span class="brand-name">SUMMIT</span>
+          <span class="brand-sub">TIRE &amp; WHEELS <b>LTD</b></span>
+        </a>
+        <p style="margin-top:16px">Locally owned mobile tire service based in Penticton, BC. We bring the shop to you.</p>
+      </div>
+
+      <div>
+        <h3>Services</h3>
+        <ul>
+          <li><a href="services.html">Emergency roadside</a></li>
+          <li><a href="services.html">Mobile replacement</a></li>
+          <li><a href="services.html">Seasonal changeover</a></li>
+          <li><a href="services.html">Wheel &amp; rim service</a></li>
+          <li><a href="services.html">Fleet &amp; commercial</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="quotes.html">Tire quotes</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Get in touch</h3>
+        <ul>
+          <li><a href="tel:+12505028000">250-502-8000</a></li>
+          <li><a href="mailto:summittire@outlook.com">summittire@outlook.com</a></li>
+        </ul>
+        <p style="margin-top:14px">On call 24 hours, 7 days.<br>Penticton and the Okanagan Valley.</p>
+      </div>
+    </div>
+
+    <div class="foot-bar">
+      <span>&copy; 2026 Summit Tire &amp; Wheels Ltd. All rights reserved.</span>
+      <span>Penticton, British Columbia</span>
+    </div>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="btn btn-call" href="tel:+12505028000">Call now</a>
+  <a class="btn btn-ghost" href="quotes.html">Get a quote</a>
+</div>
+
+<script src="site.js"></script>
 </body>
 </html>

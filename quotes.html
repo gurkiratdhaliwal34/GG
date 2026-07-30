@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tire Quotes — Summit Tire &amp; Wheels Ltd | Penticton BC</title>
+<meta name="description" content="Tell us your tire size and vehicle and we'll come back with pricing on new and used tires. Penticton and the Okanagan Valley.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-in">
+    <a class="brand" href="index.html" aria-label="Summit Tire and Wheels Ltd, home">
+      <svg viewBox="0 0 120 44" aria-hidden="true">
+        <path fill="#D91F26" d="M0 44 L34 6 L52 27 L62 16 L84 44 Z"/>
+        <path fill="#FFFFFF" d="M56 44 L84 12 L120 44 Z"/>
+      </svg>
+      <span class="brand-name">SUMMIT</span>
+      <span class="brand-sub">TIRE &amp; WHEELS <b>LTD</b></span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="quotes.html" aria-current="page">Tire Quotes</a>
+      <a href="about.html">About</a>
+    </nav>
+
+    <a class="pill-contact" href="about.html#contact">Contact</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navPanel" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav-panel" id="navPanel" hidden>
+    <nav aria-label="Mobile">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="quotes.html">Tire Quotes</a>
+      <a href="about.html">About</a>
+      <a href="about.html#contact">Contact</a>
+    </nav>
+    <a class="btn btn-call" href="tel:+12505028000">Call 250-502-8000</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
+        Penticton, BC &nbsp;·&nbsp; on call 24/7
+      </p>
+      <h1 class="h1">Get a tire quote</h1>
+      <p class="deck">
+        Fill in what you know and we'll come back with pricing on new and used options.
+        If you're stranded right now, skip the form and call — that's faster.
+      </p>
+      <div class="btns" style="margin-top:clamp(20px,3vh,28px)">
+        <a class="btn btn-call" href="tel:+12505028000">Call 250-502-8000</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+
+      <!-- ==================================================================
+           TODO — WIRE UP THE FORM. It does not send anywhere yet.
+           Pick one and set it on the <form> tag below:
+             Formspree     action="https://formspree.io/f/YOUR_ID"  method="post"
+             Netlify Forms add  netlify  attribute (host must be Netlify)
+             Web3Forms     action="https://api.web3forms.com/submit" + hidden access_key
+           Then set up the "thanks" page and point the redirect at it.
+           =================================================================== -->
+      <form class="form" action="#" method="post">
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="250-000-0000" required>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="optional">
+          </div>
+
+          <div class="field">
+            <label for="where">Where is the vehicle?</label>
+            <input id="where" name="where" type="text" placeholder="Penticton, Summerland, Highway 97…" required>
+          </div>
+        </div>
+
+        <hr class="rule" style="margin:clamp(12px,2vh,20px) 0 clamp(28px,4vh,40px)">
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="vehicle">Vehicle</label>
+            <input id="vehicle" name="vehicle" type="text" placeholder="2016 F-150, 2020 Civic…">
+          </div>
+
+          <div class="field">
+            <label for="size">Tire size</label>
+            <input id="size" name="size" type="text" placeholder="225/65R17">
+            <p class="hint">On the sidewall — three digits, a slash, two more, then R and the rim size. Not sure? Leave it blank and we'll work it out from the vehicle.</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="label" id="cond-label" style="margin-bottom:2px">New or used</span>
+          <div class="choices" role="radiogroup" aria-labelledby="cond-label">
+            <label class="choice"><input type="radio" name="condition" value="new" checked><span>New</span></label>
+            <label class="choice"><input type="radio" name="condition" value="used"><span>Used</span></label>
+            <label class="choice"><input type="radio" name="condition" value="either"><span>Whichever is cheaper</span></label>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="qty">How many</label>
+            <select id="qty" name="qty">
+              <option value="1">1 tire</option>
+              <option value="2">2 tires</option>
+              <option value="4" selected>Full set of 4</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <span class="label" id="when-label" style="margin-bottom:2px">When do you need it</span>
+            <div class="choices" role="radiogroup" aria-labelledby="when-label">
+              <label class="choice"><input type="radio" name="timing" value="today" checked><span>Today</span></label>
+              <label class="choice"><input type="radio" name="timing" value="week"><span>This week</span></label>
+              <label class="choice"><input type="radio" name="timing" value="pricing"><span>Just pricing</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">Anything else</label>
+          <textarea id="notes" name="notes" placeholder="Slow leak, winter set on rims, fleet of three trucks…"></textarea>
+        </div>
+
+        <!-- spam trap: hidden from people, filled by bots -->
+        <div class="hp" aria-hidden="true">
+          <label for="company">Company</label>
+          <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="btns" style="margin-top:clamp(16px,3vh,26px)">
+          <button class="btn btn-call" type="submit">Send quote request</button>
+          <a class="btn btn-line" href="tel:+12505028000">Or call instead</a>
+        </div>
+
+        <p class="hint" style="margin-top:16px;max-width:52ch">
+          We use these details to price your tires and call you back. Nothing else, and we don't pass them on.
+        </p>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- ============ what happens next ============ -->
+  <section class="section">
+    <div class="wrap">
+      <h2 class="h2">What happens next</h2>
+      <div class="band" style="margin-top:clamp(22px,3.6vh,34px)">
+        <div class="hazard" aria-hidden="true"></div>
+        <div class="cols-3">
+          <div class="cell">
+            <p class="figure">01</p>
+            <p class="label">We read it</p>
+            <p class="copy">Requests marked "today" jump the queue, any hour.</p>
+          </div>
+          <div class="cell">
+            <p class="figure">02</p>
+            <p class="label">We price it</p>
+            <p class="copy">New and used options for your size, with the difference spelled out.</p>
+          </div>
+          <div class="cell">
+            <p class="figure">03</p>
+            <p class="label">You decide</p>
+            <p class="copy">Say the word and we book a time to come to you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html" aria-label="Summit Tire and Wheels Ltd, home">
+          <svg viewBox="0 0 120 44" aria-hidden="true">
+            <path fill="#D91F26" d="M0 44 L34 6 L52 27 L62 16 L84 44 Z"/>
+            <path fill="#FFFFFF" d="M56 44 L84 12 L120 44 Z"/>
+          </svg>
+          <span class="brand-name">SUMMIT</span>
+          <span class="brand-sub">TIRE &amp; WHEELS <b>LTD</b></span>
+        </a>
+        <p style="margin-top:16px">Locally owned mobile tire service based in Penticton, BC. We bring the shop to you.</p>
+      </div>
+
+      <div>
+        <h3>Services</h3>
+        <ul>
+          <li><a href="services.html">Emergency roadside</a></li>
+          <li><a href="services.html">Mobile replacement</a></li>
+          <li><a href="services.html">Seasonal changeover</a></li>
+          <li><a href="services.html">Wheel &amp; rim service</a></li>
+          <li><a href="services.html">Fleet &amp; commercial</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="quotes.html">Tire quotes</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Get in touch</h3>
+        <ul>
+          <li><a href="tel:+12505028000">250-502-8000</a></li>
+          <li><a href="mailto:summittire@outlook.com">summittire@outlook.com</a></li>
+        </ul>
+        <p style="margin-top:14px">On call 24 hours, 7 days.<br>Penticton and the Okanagan Valley.</p>
+      </div>
+    </div>
+
+    <div class="foot-bar">
+      <span>&copy; 2026 Summit Tire &amp; Wheels Ltd. All rights reserved.</span>
+      <span>Penticton, British Columbia</span>
+    </div>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="btn btn-call" href="tel:+12505028000">Call now</a>
+  <a class="btn btn-ghost" href="services.html">Services</a>
+</div>
+
+<script src="site.js"></script>
+</body>
+</html>

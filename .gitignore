@@ -5,6 +5,9 @@
 node_modules/
 npm-debug.log*
 
+# Source archive the site files were delivered in; the files themselves are tracked
+files.zip
+
 # Windows / OneDrive noise
 Thumbs.db
 ehthumbs.db
