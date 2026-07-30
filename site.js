@@ -9,6 +9,21 @@
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- service worker ----------
+     Makes the site installable and readable offline, which matters most for the
+     phone number. Registered here, above the early return further down, so it
+     runs on every page and not just ones with reveal bands.
+
+     Service workers need https or localhost, so this is a no-op when the pages
+     are opened straight off the filesystem — that's expected, not a fault. */
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js')['catch'](function () {
+        /* Offline support is a bonus; the site works fine without it. */
+      });
+    });
+  }
+
   /* ---------- mobile nav ---------- */
   var toggle = document.querySelector('.nav-toggle');
   var panel = document.getElementById('navPanel');

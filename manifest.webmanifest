@@ -1,0 +1,46 @@
+{
+  "name": "Summit Tire & Wheels Ltd",
+  "short_name": "Summit Tire",
+  "description": "24/7 mobile tire service and emergency roadside assistance in Penticton, BC.",
+  "lang": "en-CA",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#08090A",
+  "theme_color": "#08090A",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Phone and hours",
+      "short_name": "Contact",
+      "description": "The 24/7 number, email, and service area",
+      "url": "./about.html#contact"
+    },
+    {
+      "name": "Get a tire quote",
+      "short_name": "Quote",
+      "description": "Send vehicle and tire details for a price",
+      "url": "./quotes.html"
+    }
+  ]
+}

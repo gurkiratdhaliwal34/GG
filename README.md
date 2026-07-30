@@ -78,7 +78,12 @@ Neither is fixable from inside the workflow. The setting is the fix.
 | `BG1.png`               | Hero photograph, set on `.hero-bg` in the CSS  |
 | `server.js`             | Static file server, Node built-ins only        |
 | `package.json`          | Scripts only; no dependencies                  |
-| `logo-mark.png`         | Masthead mark, 128px — what the pages load     |
+| `manifest.webmanifest`  | App metadata — name, icons, shortcuts          |
+| `sw.js`                 | Service worker; offline cache                  |
+| `icon-192/512.png`      | App icons; `apple-touch-icon.png` for iOS      |
+| `sitemap.xml`           | The four pages, for search engines             |
+| `robots.txt`            | Allows crawling; points at the sitemap         |
+| `logo-mark.png`         | Masthead mark, 320×208 — what the pages load   |
 | `logo.svg`              | Master logo artwork; not loaded by the site    |
 | `Logo1.svg`–`Logo9.svg` | Tire brand logos in the home page rail         |
 
@@ -118,6 +123,50 @@ Known limits of the mailto approach:
   normal; on a shared desktop it may open nothing.
 - Nothing is logged on your side. If they don't press send in their mail app,
   you never hear about it.
+
+## Installable app (PWA)
+
+The site can be installed to a phone home screen and opens without browser
+chrome. `manifest.webmanifest` supplies the name, icons and shortcuts; `sw.js`
+caches it for offline use.
+
+**The offline case that matters is the phone number.** Someone with a flat on
+Highway 97 may have one bar, so the four pages, the stylesheet, the script and
+the logos are precached — 165 KB in total. `BG1.png` is deliberately *not*
+precached: it's 1.6 MB on its own, and pulling it during install would mean a
+slow first load over exactly the weak connection this exists to survive. It gets
+cached the first time someone views the home page instead.
+
+Caching strategy:
+
+- **Pages** — network first, cache as fallback. Edits reach people who already
+  installed the app, instead of them being stuck on an old copy.
+- **Everything else** — cache first, then network. These change rarely and are
+  versioned by hand.
+- **Other origins** (the Google Fonts stylesheet) are left alone. Those
+  responses are opaque, so caching them is guesswork, and the CSS already falls
+  back to `system-ui`.
+
+**After changing any precached file, bump `CACHE` in `sw.js`** (`summit-v1` →
+`summit-v2`). Without that, installed visitors keep serving the old assets.
+
+Two things to know:
+
+- Service workers require https or localhost. Opening the pages straight off the
+  filesystem skips registration — that's expected, and `site.js` checks for it
+  rather than throwing.
+- Manifest `shortcuts` must point at in-scope URLs, so a `tel:` shortcut isn't
+  possible. That's why the shortcuts go to the contact section and the quote
+  form rather than dialling directly.
+
+## Search engines
+
+`sitemap.xml` lists the four pages; `robots.txt` allows crawling and points at
+it. Each page carries a `rel="canonical"` URL.
+
+**All of these hard-code `https://gurkiratdhaliwal34.github.io/Summit-tire/`.**
+If the site moves to a custom domain, update the `<loc>` entries, the `Sitemap:`
+line, and the canonical link in all four pages.
 
 ## The brand ticker
 
