@@ -19,8 +19,8 @@
 
   /* Masthead height, which the hero subtracts to fill the rest of the screen.
      Keep in step with .brand-mark height + .masthead-in padding + the border:
-     90 + 14 + 14 + 1. */
-  --masthead-h:119px;
+     60 + 14 + 14 + 1. */
+  --masthead-h:89px;
 }
 
 *,*::before,*::after{box-sizing:border-box;}
@@ -74,10 +74,13 @@ img,svg{max-width:100%;}
 /* The logo is full-colour artwork on dark ink, so it gets a white plate to sit
    on rather than fighting the background. Used in the masthead and the footer. */
 /* One size in both the masthead and the footer. box-sizing is border-box, so
-   90px is the outer plate and the artwork occupies 80px inside the padding. */
+   120x60 is the outer plate and the artwork gets 110x50 inside the padding.
+   The artwork is 1.54:1 and the plate is 2:1, so object-fit keeps it centred
+   at its own proportions instead of stretching it to fill. */
 .brand-mark{
   display:block;
-  width:90px;height:90px;
+  width:120px;height:60px;
+  object-fit:contain;
   background:var(--white);
   border-radius:10px;
   padding:5px;
