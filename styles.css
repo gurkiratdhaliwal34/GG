@@ -576,10 +576,17 @@ img,svg{max-width:100%;}
 }
 @keyframes slide{to{transform:translateX(-50%);}}
 
+/* Deliberate exception to the reduced-motion rule above: the brand ticker keeps
+   running for everyone. Requested by the site owner, who wants the rail moving
+   regardless of the visitor's motion preference.
+
+   !important is needed to beat the blanket `animation:none !important`.
+
+   Hover still pauses it, and needs !important for the same reason — that's the
+   only way a visitor who is bothered by the movement can stop it, so don't drop
+   it. This also means the rail no longer needs the manual-scroll fallback:
+   the motion itself brings every brand into view. */
 @media (prefers-reduced-motion:reduce){
-  /* The blanket `animation:none !important` further up already stops the
-     ticker. The problem is what's left: the track is several times wider than
-     the rail, so with nothing moving it, most of the brands sit outside a
-     hidden overflow and can never be reached. Hand scrolling back. */
-  .marquee{overflow-x:auto;scrollbar-width:thin;}
+  .track{animation:slide 34s linear infinite !important;}
+  .marquee:hover .track{animation-play-state:paused !important;}
 }

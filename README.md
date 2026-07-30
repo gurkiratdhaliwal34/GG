@@ -119,6 +119,23 @@ Known limits of the mailto approach:
 - Nothing is logged on your side. If they don't press send in their mail app,
   you never hear about it.
 
+## The brand ticker
+
+The rail of manufacturer logos on the home page scrolls continuously: `.track`
+holds the nine logos twice over and animates `translateX(-50%)` across 34
+seconds, so the loop is seamless. To add or remove a brand, edit **both** halves
+or the seam will jump.
+
+**It deliberately ignores `prefers-reduced-motion`.** That's an explicit choice
+by the site owner, not an oversight — the override carries `!important` to beat
+the blanket `animation:none !important` in the reduced-motion block. Hovering
+the rail still pauses it, also with `!important`, and that is the only way a
+visitor bothered by the movement can stop it. Don't remove the hover rule.
+
+Note that CSS animation can't be observed in headless Chrome/Edge or in
+automation browsers — they report `prefers-reduced-motion: reduce` and render
+static frames. Check the ticker in a real browser window.
+
 ## Known incomplete
 
 - The **30 minute** typical-response figure on the home page is marked with a
