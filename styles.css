@@ -16,6 +16,11 @@
   --red:#D91F26;
   --red-lit:#FF3B41;
   --gut:clamp(20px,4vw,56px);
+
+  /* Masthead height, which the hero subtracts to fill the rest of the screen.
+     Keep in step with .brand-mark height + .masthead-in padding + the border:
+     90 + 14 + 14 + 1. */
+  --masthead-h:119px;
 }
 
 *,*::before,*::after{box-sizing:border-box;}
@@ -68,21 +73,15 @@ img,svg{max-width:100%;}
 
 /* The logo is full-colour artwork on dark ink, so it gets a white plate to sit
    on rather than fighting the background. Used in the masthead and the footer. */
+/* One size in both the masthead and the footer. box-sizing is border-box, so
+   90px is the outer plate and the artwork occupies 80px inside the padding. */
 .brand-mark{
   display:block;
-  width:clamp(40px,4.4vw,50px);height:auto;
+  width:90px;height:90px;
   background:var(--white);
-  border-radius:9px;
+  border-radius:10px;
   padding:5px;
   box-shadow:0 2px 12px rgba(0,0,0,.4);
-}
-
-/* Larger in the footer, where it's the column's heading rather than one item
-   in a crowded bar. */
-.brand-mark-foot{
-  width:clamp(56px,6vw,68px);
-  border-radius:11px;
-  padding:6px;
 }
 
 .nav{display:flex;gap:clamp(18px,2.6vw,38px);}
@@ -460,7 +459,7 @@ img,svg{max-width:100%;}
 .hero{
   position:relative;
   display:flex;flex-direction:column;
-  min-height:calc(100svh - 86px);
+  min-height:calc(100svh - var(--masthead-h));
   overflow:hidden;
 }
 
