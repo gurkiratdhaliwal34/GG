@@ -78,18 +78,31 @@ Neither is fixable from inside the workflow. The setting is the fix.
 | `BG1.png`               | Hero photograph, set on `.hero-bg` in the CSS  |
 | `server.js`             | Static file server, Node built-ins only        |
 | `package.json`          | Scripts only; no dependencies                  |
-| `logo.svg`              | Full logo artwork — **currently unused**       |
-| `Logo1.svg`–`Logo9.svg` | Tire brand logos — **currently unused**        |
+| `logo.svg`              | Masthead mark on all four pages                |
+| `Logo1.svg`–`Logo9.svg` | Tire brand logos in the home page rail         |
+
+## The quote form
+
+There is no server, so `site.js` composes a `mailto:` from the field values and
+hands off to the customer's mail client. The `action` on the tag is only a no-JS
+fallback — mailto form *posts* are unreliably supported, which is why the script
+does the work.
+
+To move to a real endpoint, set an `action` on the form and delete its
+`data-mailto` attribute; the script then leaves it alone.
+
+Known limits of the mailto approach:
+
+- It depends on the customer having a working mail client. On a phone that's
+  normal; on a shared desktop it may open nothing.
+- Nothing is logged on your side. If they don't press send in their mail app,
+  you never hear about it.
 
 ## Known incomplete
 
-- The **brand rail** on the home page renders manufacturer names as styled text
-  (`.track span`). The `Logo*.svg` artwork in the repo is not wired up, and
-  `logo.svg` is unused because the header draws its own inline SVG mark.
-- **The quote form does not send.** `quotes.html:83` has `action="#"`, so
-  pressing *Send quote request* just reloads the page and the customer's details
-  are lost. A comment above the tag lists handler options (Formspree,
-  Web3Forms). This needs doing before the page goes in front of customers.
 - The **30 minute** typical-response figure on the home page is marked with a
   `PLACEHOLDER` comment in `index.html`. Confirm it's a number Summit can hit
   on a bad day, not a best case.
+- **Check the rail logo captions.** The `alt` text on `Logo2.svg` says Michelin,
+  carried over from the wordmark it replaced. The original markup called that
+  file Blackhawk. Worth opening the file to confirm which brand it actually is.
