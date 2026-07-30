@@ -577,5 +577,9 @@ img,svg{max-width:100%;}
 @keyframes slide{to{transform:translateX(-50%);}}
 
 @media (prefers-reduced-motion:reduce){
-  .track{animation:none;}
+  /* The blanket `animation:none !important` further up already stops the
+     ticker. The problem is what's left: the track is several times wider than
+     the rail, so with nothing moving it, most of the brands sit outside a
+     hidden overflow and can never be reached. Hand scrolling back. */
+  .marquee{overflow-x:auto;scrollbar-width:thin;}
 }
