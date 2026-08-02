@@ -10,7 +10,7 @@
 
 'use strict';
 
-var CACHE = 'summit-v1';
+var CACHE = 'summit-v2';
 
 /* The shell: everything needed to read the site and find the number.
    BG1.png is deliberately absent — it's 1.6MB, and precaching it would mean a
@@ -39,6 +39,7 @@ var SHELL = [
 ];
 
 self.addEventListener('install', function (event) {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE).then(function (cache) {
       /* Individual puts rather than cache.addAll: addAll rejects as a unit, so
