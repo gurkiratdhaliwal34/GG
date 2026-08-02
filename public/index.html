@@ -13,15 +13,25 @@
 <!-- installable app: see manifest.webmanifest and sw.js -->
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#08090A">
+
+<!-- Google reads its favicon only from the homepage <head>, and only trusts an
+     icon that's square and a multiple of 48px — https://developers.google.com/search/docs/appearance/favicon-in-search.
+     These two use absolute URLs on purpose: Google resolves relative favicon
+     URLs against the page, but the documented-safe form is absolute, and
+     /favicon.ico at the domain root is what Search falls back to if it can't
+     read a <link> tag at all. Keep both in sync with public/favicon.ico and
+     public/favicon.png if either ever changes. -->
+<link rel="icon" href="https://gurkiratdhaliwal34.github.io/Summit-tire/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="48x48" href="https://gurkiratdhaliwal34.github.io/Summit-tire/favicon.png">
+
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="favicon-512x512.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Summit Tire">
-<link rel="canonical" href="https://gurkiratdhaliwal34.github.io/Summit-tire/index.html">
+<link rel="canonical" href="https://gurkiratdhaliwal34.github.io/Summit-tire/">
 </head>
 <body>
 
@@ -30,18 +40,18 @@
 <header class="masthead">
   <div class="masthead-in">
     <!-- alt is empty on purpose: the anchor's aria-label already names it. -->
-    <a class="brand" href="index.html" aria-label="Summit Tire and Wheels Ltd, home">
+    <a class="brand" href="./" aria-label="Summit Tire and Wheels Ltd, home">
       <img class="brand-mark" src="logo-mark.png" width="320" height="208" alt="">
     </a>
 
     <nav class="nav" aria-label="Primary">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="services.html">Services</a>
-      <a href="quotes.html">Tire Quotes</a>
-      <a href="about.html">About</a>
+      <a href="./" aria-current="page">Home</a>
+      <a href="services/">Services</a>
+      <a href="quotes/">Tire Quotes</a>
+      <a href="about/">About</a>
     </nav>
 
-    <a class="pill-contact" href="about.html#contact">Contact</a>
+    <a class="pill-contact" href="about/#contact">Contact</a>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navPanel" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -50,11 +60,11 @@
 
   <div class="nav-panel" id="navPanel" hidden>
     <nav aria-label="Mobile">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="quotes.html">Tire Quotes</a>
-      <a href="about.html">About</a>
-      <a href="about.html#contact">Contact</a>
+      <a href="./">Home</a>
+      <a href="services/">Services</a>
+      <a href="quotes/">Tire Quotes</a>
+      <a href="about/">About</a>
+      <a href="about/#contact">Contact</a>
     </nav>
     <a class="btn btn-call" href="tel:+12505028000">Call 250-502-8000</a>
   </div>
@@ -104,7 +114,7 @@
 
       <div class="btns hero-btns">
         <a class="btn btn-call" href="tel:+12505028000">Call 250-502-8000</a>
-        <a class="btn btn-ghost" href="quotes.html">Get a tire quote</a>
+        <a class="btn btn-ghost" href="quotes/">Get a tire quote</a>
       </div>
     </div>
 
@@ -222,7 +232,7 @@
       </div>
 
       <div class="btns" style="margin-top:clamp(24px,3.6vh,34px)">
-        <a class="btn btn-line" href="services.html">See the detail on each service</a>
+        <a class="btn btn-line" href="services/">See the detail on each service</a>
       </div>
     </div>
   </section>
@@ -239,7 +249,7 @@
         </div>
         <div class="btns">
           <a class="btn btn-call" href="tel:+12505028000">Call 250-502-8000</a>
-          <a class="btn btn-line" href="quotes.html">Get a tire quote</a>
+          <a class="btn btn-line" href="quotes/">Get a tire quote</a>
         </div>
       </div>
     </div>
@@ -251,7 +261,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a class="brand" href="index.html" aria-label="Summit Tire and Wheels Ltd, home">
+        <a class="brand" href="./" aria-label="Summit Tire and Wheels Ltd, home">
           <img class="brand-mark" src="logo-mark.png" width="320" height="208" alt="">
         </a>
         <p style="margin-top:16px">Locally owned mobile tire service based in Penticton, BC. We bring the shop to you.</p>
@@ -260,22 +270,22 @@
       <div>
         <h3>Services</h3>
         <ul>
-          <li><a href="services.html">Emergency roadside</a></li>
-          <li><a href="services.html">Mobile replacement</a></li>
-          <li><a href="services.html">Seasonal changeover</a></li>
-          <li><a href="services.html">Wheel &amp; rim service</a></li>
-          <li><a href="services.html">Fleet &amp; commercial</a></li>
+          <li><a href="services/">Emergency roadside</a></li>
+          <li><a href="services/">Mobile replacement</a></li>
+          <li><a href="services/">Seasonal changeover</a></li>
+          <li><a href="services/">Wheel &amp; rim service</a></li>
+          <li><a href="services/">Fleet &amp; commercial</a></li>
         </ul>
       </div>
 
       <div>
         <h3>Site</h3>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="quotes.html">Tire quotes</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="about.html#contact">Contact</a></li>
+          <li><a href="./">Home</a></li>
+          <li><a href="services/">Services</a></li>
+          <li><a href="quotes/">Tire quotes</a></li>
+          <li><a href="about/">About</a></li>
+          <li><a href="about/#contact">Contact</a></li>
         </ul>
       </div>
 
@@ -298,7 +308,7 @@
 
 <div class="dock">
   <a class="btn btn-call" href="tel:+12505028000">Call now</a>
-  <a class="btn btn-ghost" href="quotes.html">Get a quote</a>
+  <a class="btn btn-ghost" href="quotes/">Get a quote</a>
 </div>
 
 <script src="site.js"></script>

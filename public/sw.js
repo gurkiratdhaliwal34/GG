@@ -10,7 +10,7 @@
 
 'use strict';
 
-var CACHE = 'summit-v2';
+var CACHE = 'summit-v3';
 
 /* The shell: everything needed to read the site and find the number.
    BG1.png is deliberately absent — it's 1.6MB, and precaching it would mean a
@@ -18,14 +18,13 @@ var CACHE = 'summit-v2';
    It gets cached on first view instead, by the fetch handler below. */
 var SHELL = [
   './',
-  './index.html',
-  './services.html',
-  './quotes.html',
-  './about.html',
+  './services/',
+  './quotes/',
+  './about/',
   './styles.css',
   './site.js',
   './logo-mark.png',
-  './icon-192.png',
+  './favicon-192x192.png',
   './manifest.webmanifest',
   './Logo1.svg',
   './Logo2.svg',
@@ -86,7 +85,7 @@ self.addEventListener('fetch', function (event) {
         return res;
       })['catch'](function () {
         return caches.match(req).then(function (hit) {
-          return hit || caches.match('./index.html');
+          return hit || caches.match('./');
         });
       })
     );

@@ -3,7 +3,7 @@
   "short_name": "Summit Tire",
   "description": "24/7 mobile tire service and emergency roadside assistance in Penticton, BC.",
   "lang": "en-CA",
-  "start_url": "./index.html",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
@@ -34,13 +34,13 @@
       "name": "Phone and hours",
       "short_name": "Contact",
       "description": "The 24/7 number, email, and service area",
-      "url": "./about.html#contact"
+      "url": "./about/#contact"
     },
     {
       "name": "Get a tire quote",
       "short_name": "Quote",
       "description": "Send vehicle and tire details for a price",
-      "url": "./quotes.html"
+      "url": "./quotes/"
     }
   ]
 }

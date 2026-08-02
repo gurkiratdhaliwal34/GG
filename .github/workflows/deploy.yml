@@ -1,7 +1,9 @@
 name: Deploy site
 
-# Static site — no dependencies, no build step, no npm.
-# The repo root is uploaded to GitHub Pages exactly as it sits.
+# Static site — no build step. The public/ folder is uploaded to GitHub
+# Pages exactly as it sits (pages live at clean, extensionless URLs there —
+# e.g. public/about/index.html serves at /about/ — since Pages, like
+# express.static, serves index.html for a directory request by default).
 
 on:
   push:
@@ -36,7 +38,7 @@ jobs:
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: ./public
 
       - id: deployment
         uses: actions/deploy-pages@v4

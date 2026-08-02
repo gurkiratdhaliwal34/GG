@@ -17,8 +17,16 @@
      Service workers need https or localhost, so this is a no-op when the pages
      are opened straight off the filesystem — that's expected, not a fault. */
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    /* site.js always lives next to sw.js at the site root, regardless of how
+       deep the page that loaded it sits (e.g. /about/) — so resolve sw.js
+       from this script's own URL rather than a plain relative path.
+       document.currentScript is only live during this synchronous pass, so
+       it's captured now rather than inside the async load handler below. */
+    var here = document.currentScript || document.querySelector('script[src$="site.js"]');
+    var swUrl = here ? here.src.replace(/site\.js(?:[?#].*)?$/, 'sw.js') : 'sw.js';
+
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js')['catch'](function () {
+      navigator.serviceWorker.register(swUrl)['catch'](function () {
         /* Offline support is a bonus; the site works fine without it. */
       });
     });

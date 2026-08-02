@@ -2,53 +2,56 @@
 
 Four-page site for a 24/7 mobile tire service in Penticton, BC.
 
-## Static site, zero dependencies, no build step
+## Static site, no build step — clean URLs
 
 Hand-written HTML with one shared stylesheet and one shared script. Nothing
-compiles, transpiles, or bundles. Every page links to its siblings by plain
-relative filename, so the site works from the filesystem or any static host
-without rewrite rules.
+compiles, transpiles, or bundles. Pages live under `public/` at clean,
+extensionless URLs (`public/about/index.html` → `/about/`) and link to each
+other with relative paths, so the site works unmodified from the filesystem,
+from `server.js`, or from any static host — including at a GitHub Pages
+*project* subpath like `/Summit-tire/`, which is why the links are relative
+rather than root-`/`-absolute.
 
-There is a `package.json`, but only so that tooling which insists on running
-`npm` finds what it expects. **`dependencies` is empty and stays that way** —
-`server.js` uses nothing but Node's built-in modules, so `npm install` has
-nothing to install and there is no `node_modules` tree.
+**Production is still 100% static — GitHub Pages serves `public/` directly,
+with no server behind it.** `server.js` is a *local dev convenience* only: an
+Express app that mirrors what Pages already does for directory requests
+(serve `<dir>/index.html`) and additionally 301-redirects the long form
+(`/about/index.html`) to the short form (`/about/`) — something only a real
+server can do. Pages can't run that redirect; visitors who somehow land on
+the long-form URL there just see the same page without the 301, which is why
+every internal link and the sitemap already point at the short form only.
 
-`npm run build` is a deliberate no-op. It prints a line and exits 0, so a
-platform that runs a build command doesn't fail on a site that has nothing to
+`npm install` now pulls in `express` — the one dependency the project has.
+`npm run build` is still a deliberate no-op: it prints a line and exits 0, so
+a platform that runs a build command doesn't fail on a site with nothing to
 build.
 
 ## Running it locally
-
-Simplest — no Node needed at all. Open `index.html` in a browser:
-
-```bash
-start index.html
-```
-
-The page makes no network requests apart from the Google Fonts stylesheet, so
-it renders correctly straight off the filesystem.
-
-Or serve it over HTTP, which matches how it behaves when deployed:
 
 ```bash
 npm start
 ```
 
-That runs `server.js` on <http://127.0.0.1:3000>. Set `PORT` to use another
-port. Requires Node 18 or newer.
+That runs `server.js` (Express) on <http://127.0.0.1:3000>, serving `public/`
+with clean URLs and the canonical redirect. Set `PORT` to use another port.
+Requires Node 18 or newer.
+
+You can also open `public/index.html` straight from the filesystem — the
+relative links still resolve — but the redirect and the service worker won't
+run (service workers require https or localhost), so `npm start` is the more
+faithful way to check a change.
 
 ## Deploy settings for a static host
 
 | Setting          | Value              |
 | ---------------- | ------------------ |
 | Build command    | *(empty)*          |
-| Publish / output | `.` (repo root)    |
+| Publish / output | `public`           |
 | Framework preset | None / Other       |
 
 ## Deploying
 
-`.github/workflows/deploy.yml` publishes the repo root to GitHub Pages on every
+`.github/workflows/deploy.yml` publishes `public/` to GitHub Pages on every
 push to `main`.
 
 **Pages has to be switched on once, by hand:**
@@ -67,25 +70,32 @@ Neither is fixable from inside the workflow. The setting is the fix.
 
 ## Files
 
-| File                    | What it is                                     |
-| ----------------------- | ---------------------------------------------- |
-| `index.html`            | Home — hero, why-choose, services teaser, CTA  |
-| `services.html`         | Service detail and how a call-out works        |
-| `quotes.html`           | Tire quote request form                        |
-| `about.html`            | About, service area, and contact               |
-| `styles.css`            | All styling for every page                     |
-| `site.js`               | Mobile nav, scroll reveal, figure count-up     |
-| `BG1.png`               | Hero photograph, set on `.hero-bg` in the CSS  |
-| `server.js`             | Static file server, Node built-ins only        |
-| `package.json`          | Scripts only; no dependencies                  |
-| `manifest.webmanifest`  | App metadata — name, icons, shortcuts          |
-| `sw.js`                 | Service worker; offline cache                  |
-| `icon-192/512.png`      | App icons; `apple-touch-icon.png` for iOS      |
-| `sitemap.xml`           | The four pages, for search engines             |
-| `robots.txt`            | Allows crawling; points at the sitemap         |
-| `logo-mark.png`         | Masthead mark, 320×208 — what the pages load   |
-| `logo.svg`              | Master logo artwork; not loaded by the site    |
-| `Logo1.svg`–`Logo9.svg` | Tire brand logos in the home page rail         |
+| File                             | What it is                                    |
+| -------------------------------- | ---------------------------------------------- |
+| `public/index.html`              | Home — hero, why-choose, services teaser, CTA  |
+| `public/services/index.html`     | Service detail and how a call-out works        |
+| `public/quotes/index.html`       | Tire quote request form                        |
+| `public/about/index.html`        | About, service area, and contact               |
+| `public/404.html`                | Not-found page — served on any unmatched path  |
+| `public/styles.css`              | All styling for every page                     |
+| `public/site.js`                 | Mobile nav, scroll reveal, figure count-up     |
+| `public/BG1.png`                 | Hero photograph, set on `.hero-bg` in the CSS  |
+| `server.js`                      | Express dev server — see note above            |
+| `package.json`                   | Scripts, one dependency (`express`)            |
+| `public/manifest.webmanifest`    | App metadata — name, icons, shortcuts          |
+| `public/sw.js`                   | Service worker; offline cache                  |
+| `public/icon-192/512.png`        | App icons; `apple-touch-icon.png` for iOS      |
+| `public/sitemap.xml`             | The four pages, for search engines             |
+| `public/robots.txt`              | Allows crawling; points at the sitemap         |
+| `public/logo-mark.png`           | Masthead mark, 320×208 — what the pages load   |
+| `public/logo.svg`                | Master logo artwork; not loaded by the site    |
+| `public/Logo1.svg`–`Logo9.svg`   | Tire brand logos in the home page rail         |
+
+Every page's assets and internal links are relative to *its own* location, not
+the site root — `public/index.html` loads `styles.css`, but
+`public/about/index.html` loads `../styles.css` and links home as `../`. Keep
+that pattern if you add a page: one directory deep from `public/` needs `../`
+on every shared asset and on every link that isn't to itself.
 
 ### Why the masthead uses a PNG
 
@@ -99,7 +109,8 @@ repo untouched as the master for anything needing real resolution (signage,
 print, a larger web mark). It has a `viewBox` now, so it scales properly if you
 do use it.
 
-To regenerate the PNG after editing the master:
+To regenerate the PNG after editing the master (run from `public/`, where both
+`logo.svg` and `logo-mark.png` live):
 
 ```bash
 "/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" --headless --disable-gpu --default-background-color=00000000 --window-size=128,128 --screenshot=logo-mark.png logo-frame.html
@@ -147,8 +158,8 @@ Caching strategy:
   responses are opaque, so caching them is guesswork, and the CSS already falls
   back to `system-ui`.
 
-**After changing any precached file, bump `CACHE` in `sw.js`** (`summit-v1` →
-`summit-v2`). Without that, installed visitors keep serving the old assets.
+**After changing any precached file, bump `CACHE` in `sw.js`** (e.g. `summit-v2`
+→ `summit-v3`). Without that, installed visitors keep serving the old assets.
 
 Two things to know:
 

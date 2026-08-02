@@ -1,77 +1,60 @@
 #!/usr/bin/env node
 /*
- * Static file server for the Summit Tire & Wheels site.
+ * Dev server for the Summit Tire & Wheels site — Express, serving ./public.
  *
- * Deliberately uses nothing but Node's built-in modules — there is no
- * dependency tree to install and no build step. `npm start` and open the URL.
+ * Production is still a static GitHub Pages deploy of ./public (see
+ * .github/workflows/deploy.yml) — Pages has no server, so it can't run the
+ * redirect below. This server exists so the canonical-URL behaviour can be
+ * built and tested locally; it mirrors what the static host already does
+ * for directory requests (serve <dir>/index.html) and adds the one thing a
+ * static host can't: a real 301 from the long form to the short form.
  */
 
 'use strict';
 
-const http = require('node:http');
-const fs = require('node:fs');
+const express = require('express');
 const path = require('node:path');
 
-const ROOT = __dirname;
 const PORT = Number(process.env.PORT) || 3000;
 const HOST = process.env.HOST || '127.0.0.1';
+const PUBLIC_DIR = path.join(__dirname, 'public');
 
-const CONTENT_TYPES = {
-  '.html': 'text/html; charset=utf-8',
-  '.css': 'text/css; charset=utf-8',
-  '.js': 'text/javascript; charset=utf-8',
-  '.json': 'application/json; charset=utf-8',
-  '.txt': 'text/plain; charset=utf-8',
-  '.svg': 'image/svg+xml',
-  '.png': 'image/png',
-  '.jpg': 'image/jpeg',
-  '.jpeg': 'image/jpeg',
-  '.webp': 'image/webp',
-  '.avif': 'image/avif',
-  '.ico': 'image/x-icon',
-  '.woff': 'font/woff',
-  '.woff2': 'font/woff2',
-};
+const app = express();
 
-function send(res, status, body, type = 'text/plain; charset=utf-8') {
-  res.writeHead(status, { 'Content-Type': type });
-  res.end(body);
-}
+// Canonical-URL redirect — MUST run before express.static, or static would
+// serve /about/index.html directly and this would never fire.
+app.use((req, res, next) => {
+  if (!req.path.endsWith('/index.html')) return next();
 
-const server = http.createServer((req, res) => {
-  if (req.method !== 'GET' && req.method !== 'HEAD') {
-    send(res, 405, 'Method not allowed');
-    return;
-  }
+  const shortPath = req.path.slice(0, -'index.html'.length); // keeps the trailing slash
+  const queryIndex = req.url.indexOf('?');
+  const query = queryIndex === -1 ? '' : req.url.slice(queryIndex);
 
-  // Strip the query string and decode percent-escapes before touching disk.
-  let pathname;
-  try {
-    pathname = decodeURIComponent(new URL(req.url, `http://${HOST}:${PORT}`).pathname);
-  } catch {
-    send(res, 400, 'Bad request');
-    return;
-  }
+  res.redirect(301, shortPath + query);
+});
 
-  if (pathname.endsWith('/')) pathname += 'index.html';
-
-  // Resolve inside ROOT only, so "/../../etc/passwd" can't escape the repo.
-  const filePath = path.join(ROOT, path.normalize(pathname));
-  if (filePath !== ROOT && !filePath.startsWith(ROOT + path.sep)) {
-    send(res, 403, 'Forbidden');
-    return;
-  }
-
-  fs.readFile(filePath, (err, body) => {
-    if (err) {
-      send(res, 404, '404 — not found');
-      return;
+// Serves e.g. /about/ from public/about/index.html (express.static default),
+// and 301s a directory hit without a trailing slash (/about -> /about/).
+//
+// setHeaders forces the Content-Type for .ico explicitly: express.static's
+// MIME lookup varies by the version of the underlying mime-db, sometimes
+// serving image/vnd.microsoft.icon instead of the historically-expected
+// image/x-icon. Google's favicon crawler doesn't care which of those two it
+// sees, but pinning one removes the ambiguity when checking with curl.
+app.use(express.static(PUBLIC_DIR, {
+  setHeaders(res, filePath) {
+    if (path.extname(filePath).toLowerCase() === '.ico') {
+      res.setHeader('Content-Type', 'image/x-icon');
     }
-    const type =
-      CONTENT_TYPES[path.extname(filePath).toLowerCase()] || 'application/octet-stream';
-    res.writeHead(200, { 'Content-Type': type, 'Cache-Control': 'no-cache' });
-    res.end(req.method === 'HEAD' ? undefined : body);
-  });
+  }
+}));
+
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(PUBLIC_DIR, '404.html'));
+});
+
+const server = app.listen(PORT, HOST, () => {
+  console.log(`Summit Tire site → http://${HOST}:${PORT}`);
 });
 
 server.on('error', (err) => {
@@ -80,8 +63,4 @@ server.on('error', (err) => {
     process.exit(1);
   }
   throw err;
-});
-
-server.listen(PORT, HOST, () => {
-  console.log(`Summit Tire site → http://${HOST}:${PORT}`);
 });
