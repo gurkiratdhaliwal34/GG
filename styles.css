@@ -492,7 +492,7 @@ img,svg{max-width:100%;}
 
 .hero-stage{
   position:relative;z-index:3;
-  flex:0 0 50%;
+  flex:1;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;
   padding:clamp(26px,5vh,60px) var(--gut);
