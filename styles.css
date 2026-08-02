@@ -322,6 +322,7 @@ img,svg{max-width:100%;}
   border:1px solid var(--hair);border-radius:2px;
   padding:6px 10px;
 }
+.area li a:hover{color:var(--white);}
 
 /* ---------- footer ---------- */
 .foot{
@@ -487,7 +488,7 @@ img,svg{max-width:100%;}
 
 .hero-stage{
   position:relative;z-index:3;
-  flex:1;
+  flex:0 0 50%;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;
   padding:clamp(26px,5vh,60px) var(--gut);
@@ -553,7 +554,7 @@ img,svg{max-width:100%;}
 
 @media (max-width:768px){
   .hero-bg,.bg2-band-bg{opacity:1;}
-  .bg2-band-bg{background-size:cover;background-position:right center;}
+  .bg2-band-bg{background-size:cover;background-position:center;}
 }
 
 /* ---------- brand rail ---------- */
