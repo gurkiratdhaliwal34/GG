@@ -384,11 +384,6 @@ img,svg{max-width:100%;}
   .foot-grid{grid-template-columns:1fr;}
   .btns .btn{flex:1 1 100%;}
 }
-@media (max-width:768px){
-  .hero-bg,.bg2-band-bg{opacity:1;}
-  .bg2-band-bg{background-size:200% auto;background-position:right center;}
-}
-
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
   *{transition:none !important;animation:none !important;}
@@ -554,6 +549,11 @@ img,svg{max-width:100%;}
 .bg2-band > .rail,
 .bg2-band > .section{
   position:relative;z-index:2;
+}
+
+@media (max-width:768px){
+  .hero-bg,.bg2-band-bg{opacity:1;}
+  .bg2-band-bg{background-size:200% auto;background-position:right center;}
 }
 
 /* ---------- brand rail ---------- */
