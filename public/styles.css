@@ -378,7 +378,7 @@ img,svg{max-width:100%;}
   .grid-2{grid-template-columns:1fr;gap:0;}
   .h1{max-width:none;}
   .dock{display:flex;}
-  body{padding-bottom:78px;}
+  body{padding-bottom:calc(78px + env(safe-area-inset-bottom));}
   .cta{flex-direction:column;align-items:flex-start;}
 }
 @media (max-width:560px){

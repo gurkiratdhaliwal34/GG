@@ -10,7 +10,7 @@
 
 'use strict';
 
-var CACHE = 'summit-v3';
+var CACHE = 'summit-v4';
 
 /* The shell: everything needed to read the site and find the number.
    BG1.png is deliberately absent — it's 1.6MB, and precaching it would mean a
