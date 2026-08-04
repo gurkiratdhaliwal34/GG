@@ -558,9 +558,63 @@ img,svg{max-width:100%;}
   position:relative;z-index:2;
 }
 
+/* BG1 is a 1672x941 landscape photo, but the phone hero is roughly 1:2 portrait,
+   and no single placement satisfies both halves of that. `cover` fills the frame
+   but throws away ~70% of the width, leaving a narrow centre sliver in which the
+   tires aren't readable; sizing to fit the width shows the whole rank of tires
+   but only occupies a band, leaving the top of the hero flat.
+
+   So: two layers off the one file (same URL, so it's still a single request and
+   a single decode). The fill layer supplies the top, and `100% 300%` is what
+   makes it work — stretching to 3x the hero height means only the photo's top
+   third is ever in frame, which is the red glow and the light source and no
+   tires. Stretched over the full width it reads as a lit stage rather than the
+   zoomed centre column `cover` would give. The vertical distortion is extreme
+   (~10x) but invisible: that part of the photo is a soft gradient, so it just
+   becomes a wash. The ::after then sits on top of it, bottom-anchored, and
+   carries the actual subject at full width.
+
+   The mask on ::after is load-bearing, not decoration. `auto 62%` scales the
+   whole photo, so the band's own top edge carries that same red glow — without
+   the mask you get a second light source floating across the middle of the
+   hero, and the bright pool lands right under the deck copy (it dragged the
+   worst-case contrast there down to 4.9:1). Fading the band in over 34-54%
+   drops that edge and lets it resolve into the dark instead.
+
+   The scrim is re-cut to suit: lighter at the very top so the glow survives,
+   heaviest from 30-52% where the headline and deck sit, and lifting again over
+   the photo. The red radial the desktop scrim carries is dropped here — the
+   photo's own glow now shows through and doing both double-tints the top.
+   Checked by sampling the photo behind each run of text and compositing it
+   against the scrim and the mask: against the single brightest pixel behind
+   it, the eyebrow is 7.2:1, the deck 8.7:1 and the rest 11:1+, so all of it
+   clears WCAG AAA. The top stop is .45 rather than .42 for that eyebrow
+   figure alone — the stretched light source sits directly behind it. */
 @media (max-width:768px){
   .hero-bg,.bg2-band-bg{opacity:1;}
   .bg2-band-bg{background-size:cover;background-position:center;}
+  .hero-bg{
+    background-size:100% 300%;
+    background-position:center top;
+  }
+  .hero-bg::after{
+    content:'';
+    position:absolute;inset:0;
+    background-image:url('BG1.png');
+    background-size:auto 62%;
+    background-position:center bottom;
+    background-repeat:no-repeat;
+    -webkit-mask-image:linear-gradient(180deg,transparent 34%,#000 54%);
+            mask-image:linear-gradient(180deg,transparent 34%,#000 54%);
+  }
+  .hero-scrim{
+    background:linear-gradient(180deg,
+      rgba(8,9,10,.45) 0%,
+      rgba(8,9,10,.62) 30%,
+      rgba(8,9,10,.62) 52%,
+      rgba(8,9,10,.34) 74%,
+      rgba(8,9,10,.55) 100%);
+  }
 }
 
 /* ---------- brand rail ---------- */
