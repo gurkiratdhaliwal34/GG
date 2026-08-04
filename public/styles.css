@@ -507,9 +507,15 @@ img,svg{max-width:100%;}
   -webkit-text-stroke:1.6px rgba(255,255,255,.9);
   letter-spacing:.02em;
 }
+/* The min() keeps "Mobile tire service" on one line on phones. The stage is
+   full-bleed with a 20px gutter each side (--gut bottoms out at 20px below
+   500px), and the string measures ~10x its font-size in the fallback face —
+   which is what renders first under font-display:swap — so anything above
+   (100vw - 40px)/10 wraps. Only binds under ~430px; the clamp still drives
+   tablet and desktop untouched. */
 .display .solid{
   display:block;
-  font-size:clamp(2.3rem,8vw,5.9rem);
+  font-size:min(clamp(2.3rem,8vw,5.9rem), calc(9.5vw - 4px));
   margin-top:-.06em;
 }
 /* second headline line — sized as a real line so the ampersand stops floating */
