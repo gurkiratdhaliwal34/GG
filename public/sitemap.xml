@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- If the site moves to a custom domain, replace the host in every <loc>. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
-    <loc>https://summittireandwheels.ca/Summit-tire/</loc>
+    <loc>https://summittireandwheels.ca/</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <url>
-    <loc>https://summittireandwheels.ca/Summit-tire/services/</loc>
+    <loc>https://summittireandwheels.ca/services/</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://summittireandwheels.ca/Summit-tire/quotes/</loc>
+    <loc>https://summittireandwheels.ca/quotes/</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://summittireandwheels.ca/Summit-tire/about/</loc>
+    <loc>https://summittireandwheels.ca/about/</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
-
 </urlset>
+ 
